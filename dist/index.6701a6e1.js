@@ -25414,7 +25414,7 @@ class MainView extends _reactDefault.default.Component {
                     _id: 1,
                     title: 'the black swan',
                     description: 'desc1....',
-                    ImagePath: '...'
+                    ImagePath: 'https://books.google.com/books/content?id=GSBcQVd3MqYC&pg=PP1&img=1&zoom=3&hl=en&bul=1&sig=ACfU3U1TwqSRqNkeFlnRK1UZ61TQqQexTQ&w=1280'
                 },
                 {
                     _id: 2,
@@ -25443,7 +25443,7 @@ class MainView extends _reactDefault.default.Component {
             className: "main-view",
             __source: {
                 fileName: "src/components/main-view/main-view.jsx",
-                lineNumber: 28
+                lineNumber: 34
             },
             __self: this,
             children: "The list is empty!"
@@ -25452,7 +25452,7 @@ class MainView extends _reactDefault.default.Component {
             className: "main-view",
             __source: {
                 fileName: "src/components/main-view/main-view.jsx",
-                lineNumber: 31
+                lineNumber: 37
             },
             __self: this,
             children: selectedBook ? /*#__PURE__*/ _jsxRuntime.jsx(_bookView.BookView, {
@@ -25462,7 +25462,7 @@ class MainView extends _reactDefault.default.Component {
                 },
                 __source: {
                     fileName: "src/components/main-view/main-view.jsx",
-                    lineNumber: 33
+                    lineNumber: 39
                 },
                 __self: this
             }) : books.map((book)=>/*#__PURE__*/ _jsxRuntime.jsx(_bookCard.BookCard, {
@@ -25472,7 +25472,7 @@ class MainView extends _reactDefault.default.Component {
                     },
                     __source: {
                         fileName: "src/components/main-view/main-view.jsx",
-                        lineNumber: 35
+                        lineNumber: 44
                     },
                     __self: this
                 }, book._id)
@@ -25557,7 +25557,7 @@ class BookView extends _reactDefault.default.Component {
                     },
                     __self: this,
                     children: /*#__PURE__*/ _jsxRuntime.jsx("img", {
-                        src: "{book.ImagePath}",
+                        src: book.ImagePath,
                         __source: {
                             fileName: "src/components/book-view/book-view.jsx",
                             lineNumber: 11

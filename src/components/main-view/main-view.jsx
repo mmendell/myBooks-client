@@ -1,41 +1,65 @@
+/* eslint-disable require-jsdoc */
 import React from 'react';
-import { BookCard } from '../book-card/book-card';
-import { BookView } from '../book-view/book-view';
+import axios from 'axios';
+
+
+import {BookCard} from '../book-card/book-card';
+import {BookView} from '../book-view/book-view';
+import {LoginView} from '../loginView/login-view';
 
 export class MainView extends React.Component {
-
   constructor() {
     super();
     this.state = {
-      books: [
-        { _id: 1, title: 'the black swan', description: 'desc1....', ImagePath: '...' },
-        { _id: 2, title: 'noise', description: 'desc2 ....', ImagePath: '...' },
-        { _id: 3, title: 'mans search for meaning', description: 'desc3.....', ImagePath: '...' }
-      ],
-      selectedBook: null
+      books: [],
+      selectedBook: null,
+      user: null,
     };
   }
 
-  setSelectedBook(newSelectedBook) {
+  componentDidMount() {
+    axios.get('https://fierce-dawn-45347.herokuapp.com/')
+        .then(response => {
+          this.setState ({
+            books: response.data,
+          });
+        })
+        .catch(error => {
+          console.log(error);
+        });
+  }
+
+  setSelectedBook(book) {
     this.setState({
-      selectedBook: newSelectedBook
+      selectedBook: book,
+    });
+  }
+
+  onLoggedIn(user) {
+    this.setState({
+      user,
     });
   }
 
   render() {
-    const { books, selectedBook } = this.state;
+    const {books, selectedBook, user} = this.state;
 
-    if (books.length === 0) return <div className="main-view">The list is empty!</div>;
+    if (!user) return <LoginView onLoggedIn={user => this.onLoggedIn(user)} />;
+
+    if (books.length === 0) return <div className="main-view" />;
 
     return (
       <div className="main-view">
-        {selectedBook
-                    ? <BookView book={selectedBook} onBackClick={newSelectedBook => { this.setSelectedBook(newSelectedBook); }} />
-                    : books.map(book => (
-                      <BookCard key={book._id} book={book} onBookClick={(book) =>
-                      {this.setSelectedBook(book)}
-                      } />
-                    ))
+        {selectedBook ?
+          <BookView book={selectedBook} onBackClick={newSelectedBook => {
+            this.setSelectedBook(newSelectedBook);
+          }} /> 
+          : books.map(book => (
+            <BookCard key={book._id} book={book} onBookClick={(book) => {
+              this.setSelectedBook(book);
+            }
+            } />
+          ))
         }
       </div>
     );
