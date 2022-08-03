@@ -25540,7 +25540,7 @@ var _jsxRuntime = require("react/jsx-runtime");
 var _reactDefault = parcelHelpers.interopDefault(_react);
 class BookView extends _reactDefault.default.Component {
     render() {
-        const { book  } = this.props;
+        const { book , onBackClick  } = this.props;
         return(/*#__PURE__*/ _jsxRuntime.jsxs("div", {
             className: "book-view",
             __source: {

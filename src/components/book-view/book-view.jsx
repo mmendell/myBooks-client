@@ -1,9 +1,9 @@
 /* eslint-disable linebreak-style */
-import React from "react";
+import React from 'react';
 
 export class BookView extends React.Component {
   render() {
-    const { book } = this.props;
+    const {book, onBackClick} = this.props;
 
     return(
       <div className="book-view">
