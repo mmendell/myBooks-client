@@ -54,11 +54,10 @@ export class MainView extends React.Component {
           <BookView book={selectedBook} onBackClick={newSelectedBook => {
             this.setSelectedBook(newSelectedBook);
           }} />
-          : books.map((book) => (
-            <BookCard key={book._id} book={book} onBookClick={(book) => {
-              this.setSelectedBook(book);
-            }
-            } />
+          : books.map(book => (
+            <BookCard key={book._id} book={book} onBookClick={(newSelectedBook) => {
+              this.setSelectedBook(newSelectedBook);
+            }} />
           ))
         }
       </div>
