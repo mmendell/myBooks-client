@@ -1,11 +1,13 @@
 /* eslint-disable require-jsdoc */
 import React from 'react';
 import axios from 'axios';
-
+import Row from 'react-bootstrap/esm/Row';
+import Col from 'react-bootstrap/esm/Col';
 
 import {BookCard} from '../book-card/book-card';
 import {BookView} from '../book-view/book-view';
 import {LoginView} from '../loginView/login-view';
+import {object} from 'prop-types';
 
 export class MainView extends React.Component {
   constructor() {
@@ -18,7 +20,7 @@ export class MainView extends React.Component {
   }
 
   componentDidMount() {
-    axios.get('https://fierce-dawn-45347.herokuapp.com/')
+    axios.get('https://fierce-dawn-45347.herokuapp.com')
         .then(response => {
           this.setState({
             books: response.data,
@@ -49,18 +51,23 @@ export class MainView extends React.Component {
     if (books.length === 0) return <div className="main-view" />;
 
     return (
-      <div className="main-view">
-        {selectedBook ?
-          <BookView book={selectedBook} onBackClick={newSelectedBook => {
-            this.setSelectedBook(newSelectedBook);
-          }} />
-          : books.map(book => (
-            <BookCard key={book._id} book={book} onBookClick={(newSelectedBook) => {
+      <Row className='main-view justify-content-md-center'>
+        {selectedBook
+        ? (
+          <Col md={9}>
+            <BookView book={selectedBook} onBackClick={newSelectedBook => {
               this.setSelectedBook(newSelectedBook);
             }} />
+          </Col>
+        )
+          :object.values(books).map(book => (
+            <Col md={3}>
+              <BookCard key={book._id} book={book} onBookClick={(newSelectedBook) => {
+                this.setSelectedBook(newSelectedBook);}} />
+            </Col>
           ))
         }
-      </div>
+      </Row>
     );
   }
 }

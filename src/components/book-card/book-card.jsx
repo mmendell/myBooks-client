@@ -1,12 +1,21 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import Button from 'react-bootstrap';
+import Card from 'react-bootstrap';
 
 export class BookCard extends React.Component {
   render() {
     const {book, onBookClick} = this.props;
 
     return (
-      <div onClick={() => onBookClick(book)} className="book-card">{book.title}</div>
+      <Card>
+        <Card.Img variant="top" src={book.imagePath} />
+        <Card.Body>
+          <Card.Title>{book.title}</Card.Title>
+          <Card.Text>{book.description}</Card.Text>
+          <Button onClick={() => onBookClick(book)} variant="link">Open</Button>
+        </Card.Body>
+      </Card>
     );
   }
 }
@@ -17,7 +26,7 @@ BookCard.PropTypes = {
     description: PropTypes.string.isRequired,
     genre: PropTypes.shape({
       name: PropTypes.string.isRequired,
-      description: PropTypes.string.isRequired
+      description: PropTypes.string.isRequired,
     }),
     author: PropTypes.shape({
       name: PropTypes.string.isRequired,
