@@ -1,6 +1,6 @@
 import React, {useState} from 'react';
 import {Form, Button, Card, CardGroup, Container, Col, Row} from 'react-bootstrap';
-
+import { propTypes } from 'prop-types';
 import './registration.scss';
 import axios from 'axios';
 
@@ -23,6 +23,7 @@ export function RegistrationView(props)
         {
           const data = response.data;
           console.log(data);
+          props.onLoggedIn(username);
         })
         .catch(e =>
         {

@@ -1,7 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import Button from 'react-bootstrap';
-import Card from 'react-bootstrap';
+import {Button, Card} from 'react-bootstrap';
 
 export class BookCard extends React.Component {
   render() {
@@ -20,7 +19,7 @@ export class BookCard extends React.Component {
   }
 }
 
-BookCard.PropTypes = {
+BookCard.propTypes = {
   book: PropTypes.shape({
     title: PropTypes.string.isRequired,
     description: PropTypes.string.isRequired,

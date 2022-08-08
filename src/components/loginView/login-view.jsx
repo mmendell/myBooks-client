@@ -6,6 +6,9 @@ import Button from 'react-bootstrap/esm/Button';
 
 import { RegistrationView } from '../registration-view/registration';
 import { Container, Nav, Navbar,  } from 'react-bootstrap';
+import './login-view.scss';
+import { propTypes } from 'react-bootstrap/esm/Image';
+
 
 export function LoginView(props) {
   const [username, setUsername] = useState('');
@@ -30,7 +33,7 @@ export function LoginView(props) {
 
   return (
     <Container fluid>
-      <Navbar bg='light' expand='lg'>
+      <Navbar bg='dark' expand='lg'>
         <Navbar.Brand href='#Home'>BookENgine</Navbar.Brand>
         <Navbar.Toggle aria-controls='basic navbar'></Navbar.Toggle>
         <Navbar.Collapse id='basic navbar'><Nav className='me-auto'>
@@ -54,3 +57,13 @@ export function LoginView(props) {
     </Container>
   );
 }
+
+LoginView.PropTypes = {
+  user: PropTypes.shape({
+    username: PropTypes.string.isRequired,
+    password: PropTypes.string.isRequired,
+    email: PropTypes.string.isRequired,
+    birthday: PropTypes.number,
+  }),
+  onLoggedIn: PropTypes.func.isRequired,
+};

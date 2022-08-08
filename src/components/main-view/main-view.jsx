@@ -1,4 +1,3 @@
-/* eslint-disable require-jsdoc */
 import React from 'react';
 import axios from 'axios';
 import Row from 'react-bootstrap/esm/Row';
@@ -60,7 +59,7 @@ export class MainView extends React.Component {
             }} />
           </Col>
         )
-          :object.values(books).map(book => (
+          :Object.values(books).map(book => (
             <Col md={3}>
               <BookCard key={book._id} book={book} onBookClick={(newSelectedBook) => {
                 this.setSelectedBook(newSelectedBook);}} />
