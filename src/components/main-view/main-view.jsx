@@ -20,7 +20,7 @@ export class MainView extends React.Component {
   componentDidMount() {
     axios.get('https://fierce-dawn-45347.herokuapp.com/')
         .then(response => {
-          this.setState ({
+          this.setState({
             books: response.data,
           });
         })
