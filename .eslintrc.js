@@ -19,8 +19,13 @@ module.exports = {
     'react',
   ],
   'rules': {
+<<<<<<< Updated upstream
     'react/jsx-uses-react': 'error',
     'react/jsx-uses-vars': 'error',
     'require-jsdoc': 0,
+=======
+    'require-jsdoc': 0,
+    'linebreak-style': 0,
+>>>>>>> Stashed changes
   },
 };
