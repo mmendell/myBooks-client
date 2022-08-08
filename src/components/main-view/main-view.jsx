@@ -16,7 +16,23 @@ export class MainView extends React.Component {
     };
   }
 
+<<<<<<< Updated upstream
   setSelectedBook(newSelectedBook) {
+=======
+  componentDidMount() {
+    axios.get('https://fierce-dawn-45347.herokuapp.com')
+        .then(response => {
+          this.setState({
+            books: response.data,
+          });
+        })
+        .catch((error) => {
+          console.log(error);
+        });
+  }
+
+  setSelectedBook(book) {
+>>>>>>> Stashed changes
     this.setState({
       selectedBook: newSelectedBook
     });
