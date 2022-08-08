@@ -21,12 +21,12 @@ export class MainView extends React.Component {
 
   componentDidMount() {
     axios.get('https://fierce-dawn-45347.herokuapp.com')
-        .then(response => {
+        .then((response) => {
           this.setState({
             books: response.data,
           });
         })
-        .catch(error => {
+        .catch((error) => {
           console.log(error);
         });
   }
@@ -46,7 +46,7 @@ export class MainView extends React.Component {
   render() {
     const {books, selectedBook, user} = this.state;
 
-    if (!user) return <LoginView onLoggedIn={user => this.onLoggedIn(user)} />;
+    if (!user) return <LoginView onLoggedIn={(user) => this.onLoggedIn(user)} />;
 
     if (books.length === 0) return <div className="main-view" />;
 
@@ -55,12 +55,12 @@ export class MainView extends React.Component {
         {selectedBook
         ? (
           <Col md={9}>
-            <BookView book={selectedBook} onBackClick={newSelectedBook => {
+            <BookView book={selectedBook} onBackClick={(newSelectedBook) => {
               this.setSelectedBook(newSelectedBook);
             }} />
           </Col>
         )
-          :object.values(books).map(book => (
+          :object.values(books).map((book) => (
             <Col md={3}>
               <BookCard key={book._id} book={book} onBookClick={(newSelectedBook) => {
                 this.setSelectedBook(newSelectedBook);}} />
