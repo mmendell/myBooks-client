@@ -65,7 +65,8 @@ export function RegistrationView(props)
 
                   <Form.Group>
                     <Form.Label>Email:</Form.Label>
-                    <Form.Control type="email"
+                    <Form.Control
+                     type="email"
                       value={email}
                       onChange={(e) => setEmail(e.target.value)}
                       required
@@ -87,6 +88,3 @@ export function RegistrationView(props)
 
   );
 }
-
-export default registerView;
-
