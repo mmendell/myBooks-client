@@ -1,24 +1,24 @@
+/* eslint-disable require-jsdoc */
 import React from 'react';
-import { BookCard } from '../book-card/book-card';
-import { BookView } from '../book-view/book-view';
+import axios from 'axios';
+import Row from 'react-bootstrap/esm/Row';
+import Col from 'react-bootstrap/esm/Col';
+
+import {BookCard} from '../book-card/book-card';
+import {BookView} from '../book-view/book-view';
+import {LoginView} from '../loginView/login-view';
+import {object} from 'prop-types';
 
 export class MainView extends React.Component {
-
   constructor() {
     super();
     this.state = {
-      books: [
-        { _id: 1, title: 'the black swan', description: 'desc1....', ImagePath: '...' },
-        { _id: 2, title: 'noise', description: 'desc2 ....', ImagePath: '...' },
-        { _id: 3, title: 'mans search for meaning', description: 'desc3.....', ImagePath: '...' }
-      ],
-      selectedBook: null
+      books: [],
+      selectedBook: null,
+      user: null,
     };
   }
 
-<<<<<<< Updated upstream
-  setSelectedBook(newSelectedBook) {
-=======
   componentDidMount() {
     axios.get('https://fierce-dawn-45347.herokuapp.com')
         .then(response => {
@@ -26,34 +26,48 @@ export class MainView extends React.Component {
             books: response.data,
           });
         })
-        .catch((error) => {
+        .catch(error => {
           console.log(error);
         });
   }
 
   setSelectedBook(book) {
->>>>>>> Stashed changes
     this.setState({
-      selectedBook: newSelectedBook
+      selectedBook: book,
+    });
+  }
+
+  onLoggedIn(user) {
+    this.setState({
+      user,
     });
   }
 
   render() {
-    const { books, selectedBook } = this.state;
+    const {books, selectedBook, user} = this.state;
 
-    if (books.length === 0) return <div className="main-view">The list is empty!</div>;
+    if (!user) return <LoginView onLoggedIn={user => this.onLoggedIn(user)} />;
+
+    if (books.length === 0) return <div className="main-view" />;
 
     return (
-      <div className="main-view">
+      <Row className='main-view justify-content-md-center'>
         {selectedBook
-                    ? <BookView book={selectedBook} onBackClick={newSelectedBook => { this.setSelectedBook(newSelectedBook); }} />
-                    : books.map(book => (
-                      <BookCard key={book._id} book={book} onBookClick={(book) =>
-                      {this.setSelectedBook(book)}
-                      } />
-                    ))
+        ? (
+          <Col md={9}>
+            <BookView book={selectedBook} onBackClick={newSelectedBook => {
+              this.setSelectedBook(newSelectedBook);
+            }} />
+          </Col>
+        )
+          :object.values(books).map(book => (
+            <Col md={3}>
+              <BookCard key={book._id} book={book} onBookClick={(newSelectedBook) => {
+                this.setSelectedBook(newSelectedBook);}} />
+            </Col>
+          ))
         }
-      </div>
+      </Row>
     );
   }
 }

@@ -8,7 +8,7 @@ export class BookView extends React.Component {
     return(
       <div className="book-view">
         <div className="book-poster">
-          <img src="{book.ImagePath}" />
+          <img src={book.ImagePath} />
         </div>
         <div className="book-title">
           <span className="label">Title:</span>
