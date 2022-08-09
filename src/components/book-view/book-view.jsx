@@ -1,12 +1,12 @@
 import React from 'react';
-import { Button, Container, Row, Col, Card, CardGroup } from 'react-bootstrap';
+import {Button, Container, Row, Col, Card, CardGroup} from 'react-bootstrap';
 import propTypes from 'prop-types';
 
-export class BookView extends React.Component
-{
-  render()
-  {
-    const { book, onBackClick } = this.props;
+import Link from 'react-router-dom';
+
+export class BookView extends React.Component {
+  render() {
+    const {book, onBackClick} = this.props;
 
     return (
       <Container fluid className='book-container'>
@@ -38,9 +38,34 @@ export class BookView extends React.Component
 
         <Row>
           <Col>
+            <div className='book-genre'>
+              <span className='label'>Genre:</span>
+              <span className='value'>{book.genre.name}</span>
+              <Link to={`/genres/${book.genre.name}`}>
+                <Button variant='link'>Genre</Button>
+              </Link>
+            </div>
+          </Col>
+        </Row>
+
+        <Row>
+          <Col>
+            <div className='book-author'>
+              <span className='label'>Author:</span>
+              <span className='value'>{book.author.name}</span>
+              <Link to={`/authors/${book.author.name}`}>
+                <Button variant='link'>Author</Button>
+              </Link>
+            </div>
+          </Col>
+        </Row>
+
+        <Row>
+          <Col>
             <Button
-              onClick={() =>
-              { onBackClick(null); }}>
+              onClick={() => {
+                onBackClick(null);
+              }}>
               Back
             </Button>
 
@@ -48,8 +73,6 @@ export class BookView extends React.Component
         </Row>
 
       </Container>
-
-
 
 
     );

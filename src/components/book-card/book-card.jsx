@@ -1,30 +1,24 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { Button, Card, CardGroup, Container, Col, Row, } from 'react-bootstrap';
+import {Button, Card} from 'react-bootstrap';
 
-export class BookCard extends React.Component
-{
-  render()
-  {
-    const { book, onBookClick } = this.props;
+import {Link} from 'react-router-dom';
+
+export class BookCard extends React.Component {
+  render() {
+    const {book} = this.props;
 
     return (
-      <Container>
-        <Row>
-          <Col>
-            <CardGroup>
-              <Card>
-                <Card.Img variant="top" src={book.imagePath} />
-                <Card.Body>
-                  <Card.Title>{book.title}</Card.Title>
-                  <Card.Text>{book.description}</Card.Text>
-                  <Button onClick={() => onBookClick(book)} variant="link">Open</Button>
-                </Card.Body>
-              </Card>
-            </CardGroup>
-          </Col>
-        </Row>
-      </Container>
+      <Card>
+        <Card.Img variant="top" src={book.imagePath} />
+        <Card.Body>
+          <Card.Title>{book.title}</Card.Title>
+          <Card.Text>{book.description}</Card.Text>
+          <Link to={`/books/${book._id}`}>
+            <Button variant="link">Open</Button>
+          </Link>
+        </Card.Body>
+      </Card>
 
     );
   }

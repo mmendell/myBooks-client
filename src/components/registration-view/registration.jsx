@@ -1,35 +1,71 @@
 import React, {useState} from 'react';
 import {Form, Button, Card, CardGroup, Container, Col, Row} from 'react-bootstrap';
-import { propTypes } from 'prop-types';
+import propTypes from 'prop-types';
 import './registration.scss';
 import axios from 'axios';
 
-export function RegistrationView(props)
-
-{
+export function RegistrationView(props) {
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
   const [email, setEmail] = useState('');
   const [birthday, setBirthday] = useState('');
 
-  const handleSubmit = (e) =>
-  {
+  const [values, setValues] = useState({
+    nameErr: '',
+    usernameErr: '',
+    passwordErr: '',
+    emailErr: '',
+  });
+
+  const validate = () => {
+    let isReq = true;
+    if (name) {
+      setValues({...values, nameErr: 'name is required'});
+      isReq = false;
+    }
+    if (!username) {
+      setValues({...values, usernameErr: 'username required'});
+      isReq = false;
+    } else if (username.length < 4) {
+      setValues({...values, usernameErr: 'username must be at least 4 characters'});
+      isReq = false;
+    }
+    if (!password) {
+      setValues({...values, passwordErr: 'password required'});
+      isReq = false;
+    } else if (password.length < 8) {
+      setValues({...values, passwordErr: 'password must be at least 8 characters'});
+      isReq = false;
+    }
+    if (!email) {
+      setValues({...values, emailErr: 'email required'});
+      isReq = false;
+    } else if (email.indexOf('@') === -1) {
+      setValues({...values, emailErr: 'invalid email'});
+      isReq = false;
+    }
+    return isReq;
+  };
+
+
+  const handleSubmit = (e) => {
     e.preventDefault();
-    axios.post('https://fierce-dawn-45347.herokuapp.com/users', {
-      username: username,
-      password: password,
-      email, email,
-    })
-        .then(response =>
-        {
-          const data = response.data;
-          console.log(data);
-          props.onLoggedIn(username);
-        })
-        .catch(e =>
-        {
-          console.log('error registering');
-        });
+    const isReq = validate();
+    if (isReq) {
+      axios.post('https://fierce-dawn-45347.herokuapp.com/users', {
+        username: username,
+        password: password,
+        email: email,
+      })
+          .then((response) => {
+            const data = response.data;
+            console.log(data);
+            props.onLoggedIn(username);
+          })
+          .catch((e) => {
+            console.log('error registering');
+          });
+    }
   };
 
   return (
@@ -50,6 +86,7 @@ export function RegistrationView(props)
                       onChange={(e) => setUsername(e.target.value)}
                       required
                       placeholder='enter a username'
+                      {...values.usernameErr && <p>{values.usernameErr} </p> }
                     />
                   </Form.Group>
 
@@ -62,17 +99,19 @@ export function RegistrationView(props)
                       required
                       minLength={8}
                       placeholder='password must be at least 8 characters'
+                      {...values.passwordErr && <p>{values.passwordErr} </p> }
                     />
                   </Form.Group>
 
                   <Form.Group>
                     <Form.Label>Email:</Form.Label>
                     <Form.Control
-                     type="email"
+                      type="email"
                       value={email}
                       onChange={(e) => setEmail(e.target.value)}
                       required
                       placeholder='richard@tomsmith.com'
+                      {...values.emailErr && <p>{values.emailErr}</p> }
                     />
                   </Form.Group>
                   <Button variant='primary' type='submit'
@@ -90,3 +129,12 @@ export function RegistrationView(props)
 
   );
 }
+
+RegistrationView.propTypes= {
+  register: propTypes.shape({
+    name: propTypes.string.isRequired,
+    username: propTypes.string.isRequired,
+    password: propTypes.string.isRequired,
+    email: propTypes.string.isRequired,
+  }),
+};
