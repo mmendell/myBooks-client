@@ -1,6 +1,6 @@
 import React from 'react';
 import axios from 'axios';
-import {BrowserRouter as Router, Route} from 'react-router-dom';
+import {BrowserRouter as Router, Route, Redirect} from 'react-router-dom';
 
 import {Row, Col} from 'react-bootstrap';
 
@@ -70,25 +70,28 @@ export class MainView extends React.Component {
   render() {
     const {books, selectedBook, user} = this.state;
 
-    if (!user) {
-      return <Row>
-        <Col>
-          <LoginView onLoggedIn={(user) => this.onLoggedIn(user)} />;
-        </Col>
-      </Row>;
-    };
-
-    if (books.length === 0) return <div className="main-view" />;
-
     return (
       <Router>
         <Row className='main-view justify-content-md-center'>
           <Route exact path='/' render={() => {
+            if (!user) return <Col>
+              <LoginView onLoggedIn={user => this.onLoggedIn(user)} />
+            </Col>
+
+            if (books.length === 0) return <div className="main-view" />;
+
             return books.map((m)=> (
               <Col md={3} key={m._id}>
                 <BookCard book={m} />
               </Col>
             ));
+          }} />
+          <Route path='/' .. />
+          <Route path='/register' render={() => {
+            if (user) return <Redirect to='/' />
+            return <Col>
+              <RegistrationView />
+            </Col>;
           }} />
 
           <Route path='/books/bookId' render={({match, history}) => {
