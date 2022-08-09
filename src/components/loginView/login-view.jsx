@@ -1,13 +1,13 @@
 import React, {useState} from 'react';
 import axios from 'axios';
+import propTypes from 'prop-types';
 
 import Form from 'react-bootstrap/Form';
 import Button from 'react-bootstrap/esm/Button';
 
-import { RegistrationView } from '../registration-view/registration';
-import { Container, Nav, Navbar,  } from 'react-bootstrap';
+import RegistrationView from '../registration-view/registration';
+import { Container, Nav, Navbar, Form} from 'react-bootstrap';
 import './login-view.scss';
-import propTypes from 'prop-types';
 
 
 export function LoginView(props) {
@@ -59,11 +59,11 @@ export function LoginView(props) {
 }
 
 LoginView.PropTypes = {
-  user: PropTypes.shape({
-    username: PropTypes.string.isRequired,
-    password: PropTypes.string.isRequired,
-    email: PropTypes.string.isRequired,
-    birthday: PropTypes.number,
+  user: propTypes.shape({
+    username: propTypes.string.isRequired,
+    password: propTypes.string.isRequired,
+    email: propTypes.string.isRequired,
+    birthday: propTypes.number,
   }),
-  onLoggedIn: PropTypes.func.isRequired,
+  onLoggedIn: propTypes.func.isRequired,
 };
