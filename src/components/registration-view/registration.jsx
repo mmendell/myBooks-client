@@ -5,6 +5,7 @@ import './registration.scss';
 import axios from 'axios';
 
 export function RegistrationView(props)
+
 {
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');

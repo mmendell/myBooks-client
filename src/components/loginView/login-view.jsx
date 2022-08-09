@@ -7,7 +7,7 @@ import Button from 'react-bootstrap/esm/Button';
 import { RegistrationView } from '../registration-view/registration';
 import { Container, Nav, Navbar,  } from 'react-bootstrap';
 import './login-view.scss';
-import { propTypes } from 'react-bootstrap/esm/Image';
+import propTypes from 'prop-types';
 
 
 export function LoginView(props) {
