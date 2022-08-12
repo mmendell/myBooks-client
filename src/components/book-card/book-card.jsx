@@ -29,7 +29,7 @@ BookCard.propTypes = {
     title: PropTypes.string.isRequired,
     description: PropTypes.string.isRequired,
     genre: PropTypes.shape({
-      name: PropTypes.string.isRequired,
+      name: PropTypes.string,
       description: PropTypes.string.isRequired,
     }),
     author: PropTypes.shape({
@@ -38,5 +38,4 @@ BookCard.propTypes = {
       birthday: PropTypes.string,
     }),
   }).isRequired,
-  onBookClick: PropTypes.func.isRequired,
 };

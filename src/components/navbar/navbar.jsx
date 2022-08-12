@@ -1,9 +1,8 @@
 import React from 'react';
 import { Container, Nav, Navbar } from 'react-bootstrap';
 
-export function NavBar(props)
-{
-  return(
+export function NavBar(props) {
+  return (
     <NavBar>
       <NavBar.Brand href='#Home'>myBooks</NavBar.Brand>
       <Nav classname='me-auto'>
@@ -12,5 +11,5 @@ export function NavBar(props)
         <Nav.Link href='#Sign-up'>Sign up</Nav.Link>
       </Nav>
     </NavBar>
-    );
+  );
 };
