@@ -1,7 +1,7 @@
 
 import React from 'react';
 import {Container, Nav, Navbar} from 'react-bootstrap';
-import {Link} from 'reaxt-router-dom;
+import {Link} from 'react-router-dom';
 export function NavBar(props) {
   let user = localStorage.getItem('user');
   
@@ -49,4 +49,3 @@ export function NavBar(props) {
     </NavBar>
   );
 };
-`;
