@@ -1,6 +1,6 @@
 import React from 'react';
 import axios from 'axios';
-import {BrowserRouter as Route, Redirect, Router} from 'react-router-dom';
+import {BrowserRouter as Router, Routes, Route, Redirect, Link} from 'react-router-dom';
 
 import {Row, Col} from 'react-bootstrap';
 

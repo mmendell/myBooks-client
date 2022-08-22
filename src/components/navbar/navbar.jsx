@@ -1,7 +1,7 @@
+
 import React from 'react';
 import {Container, Nav, Navbar} from 'react-bootstrap';
-import {BrowserRouter as Router, Routes, Route, Redirect, Link} from 'react-router-dom';
-
+import {Link} from 'reaxt-router-dom;
 export function NavBar(props) {
   let user = localStorage.getItem('user');
   
@@ -26,17 +26,27 @@ export function NavBar(props) {
 
   return (
 
-    {isAuth() && (
-      (user)
-    )}
-    
     <NavBar>
       <NavBar.Brand href='#Home'>myBooks</NavBar.Brand>
-      <Nav classname='me-auto'>
         <Nav.Link href='#Profile-View'>My Account</Nav.Link>
         <Nav.Link href='#Sign-out'>Sign out</Nav.Link>
         <Nav.Link href='#Sign-up'>Sign up</Nav.Link>
+        <Nav className="me-auto">
+        {isAuth() && (
+          <Nav.Link as={Link} to={`/users/${user}`}>
+          {user}
+          </Nav.Link>
+        )}
+        {isAuth() && (
+            <Button className="logout" variant="link" onClick={handleLogOut}>
+              Logout
+            </Button>
+            )}
+            {!isAuth() && <Nav.Link href="/">Sign in</Nav.Link>}
+            {!isAuth() && <Nav.Link href="/register">Sign up</Nav.Link>}
+        
       </Nav>
     </NavBar>
   );
 };
+`;
