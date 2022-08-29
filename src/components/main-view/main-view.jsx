@@ -1,43 +1,130 @@
 import React from 'react';
-import { BookCard } from '../book-card/book-card';
-import { BookView } from '../book-view/book-view';
+import axios from 'axios';
+import {BrowserRouter as Router, Routes, Route, Redirect, Link} from 'react-router-dom';
+
+import {Row, Col} from 'react-bootstrap';
+
+import {BookCard} from '../book-card/book-card';
+import {BookView} from '../book-view/book-view';
+import {LoginView} from '../loginView/login-view';
+import {RegistrationView} from '../registration-view/registration';
+import {AuthorView} from '../author-view/author-view';
+import {GenreView} from '../genre-view/genre-view';
+import {NavBar} from '../navbar/navbar';
 
 export class MainView extends React.Component {
-
   constructor() {
     super();
     this.state = {
-      books: [
-        { _id: 1, title: 'the black swan', description: 'desc1....', ImagePath: '...' },
-        { _id: 2, title: 'noise', description: 'desc2 ....', ImagePath: '...' },
-        { _id: 3, title: 'mans search for meaning', description: 'desc3.....', ImagePath: '...' }
-      ],
-      selectedBook: null
+      books: [],
+      user: null,
     };
   }
 
-  setSelectedBook(newSelectedBook) {
+  componentDidMount() {
+    const accessToken = localStorage.getItem('token');
+    if (accessToken !== null) {
+      this.setState({
+        user: localStorage.getItem('user'),
+      });
+      this.getBooks(accessToken);
+    }
+  }
+
+  setSelectedBook(book) {
     this.setState({
-      selectedBook: newSelectedBook
+      selectedBook: book,
     });
   }
 
-  render() {
-    const { books, selectedBook } = this.state;
+  onLoggedIn(authData) {
+    console.log(authData);
+    this.setState({
+      user: authData.user.username,
+    });
+    localStorage.setItem('token', authData.token);
+    localStorage.setItem('user', authData.user.username);
+    this.getBooks(authData.token);
+  }
 
-    if (books.length === 0) return <div className="main-view">The list is empty!</div>;
+  onLoggedOut() {
+    localStorage.removeItem('token');
+    localStorage.removeItem('user');
+    this.setState({
+      user: null,
+    });
+  }
+
+  getBooks(token) {
+    axios.get('https://fierce-dawn-45347.herokuapp.com/books', {
+      headers: {Authorization: `Bearer ${token}`},
+    })
+        .then((response) => {
+          this.setState({
+            books: response.data,
+          });
+        })
+        .catch(function(error) {
+          console.log(error);
+        });
+  }
+
+  render() {
+    const {books, user} = this.state;
 
     return (
-      <div className="main-view">
-        {selectedBook
-                    ? <BookView book={selectedBook} onBackClick={newSelectedBook => { this.setSelectedBook(newSelectedBook); }} />
-                    : books.map(book => (
-                      <BookCard key={book._id} book={book} onBookClick={(book) =>
-                      {this.setSelectedBook(book)}
-                      } />
-                    ))
-        }
-      </div>
+      <Router>
+        <Row>
+          <NavBar user={user} />
+        </Row>
+        <Row className='main-view justify-content-md-center'>
+          <Route
+            exact
+            path="/"
+            render={() => {
+              if (!user)
+                return <Col>
+                <LoginView onLoggedIn={(user) => this.onLoggedIn(user)} />
+              </Col>
+
+              if (books.length === 0) return <div className='main-view'>
+
+              return books.map(m => (
+                <Col md={3} key={m._id}>
+                  <BookCard book={m} />
+                </Col>
+              ))
+            }} />
+          <Route path='/register' render={() => {
+            if (user) return <Redirect to="/" />
+            return <Col>
+              <RegistrationView />
+            </Col>;
+          }} />
+
+          <Route path='/books/bookId' render={({match, history}) => {
+            return <Col md={8}>
+              <BookView book={books.find((m) => m._id === match.params.bookId)}
+                onBackClick={() => history.goBack()} />
+            </Col>;
+          }} />
+
+          <Route path="/authors/:name" render={({match}) => {
+            if (books.length === 0) return <div className="main-view" />;
+            return <Col md={8}>
+              <AuthorView author={books.find(m => m.author.name === match.params.name).author} />
+            </Col>;
+          }} />
+
+          <Route path="/genres/:name" render={({match}) => {
+            if (books.length === 0) return <div className="main-view" />;
+            return <Col md={8}>
+              <GenreView genre={books.find(m => m.genre.name === match.params.name).genre} />
+            </Col>;
+          }} />
+
+        </Row>
+      </Router>
     );
   }
 }
