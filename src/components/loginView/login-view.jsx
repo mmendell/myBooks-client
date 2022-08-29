@@ -64,8 +64,7 @@ export function LoginView(props)
         <Navbar.Brand href='#Home'>BookENgine</Navbar.Brand>
         <Navbar.Toggle aria-controls='basic navbar'></Navbar.Toggle>
         <Navbar.Collapse id='basic navbar'><Nav className='me-auto'>
-          <Nav.Link href='../registration-view/registration.jsx'>Register</Nav.Link>
-        </Nav>
+          </Nav>
         </Navbar.Collapse>
       </Navbar>
 

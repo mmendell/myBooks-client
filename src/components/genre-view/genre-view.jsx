@@ -1,15 +1,11 @@
-import React from "react";
+import React from 'react';
 import PropTypes from 'prop-types';
 
-import { Button, Col, Row, Container } from 'react-bootstrap';
-import { render } from "react-dom";
+import {Button, Col, Row, Container} from 'react-bootstrap';
 
-export function GenreView() {
-  render(){
-    const { genre, onBackClick } = this.props;
-
-  }
-
+export class GenreView extends React.Component {
+  render() {
+    const {genre, onBackClick} = this.props;
     return (
       <Container className="genre-view">
         <Row>
@@ -25,11 +21,11 @@ export function GenreView() {
       </Container>
     )
   }
-
+}
 
 GenreView.PropTypes = {
   genre: PropTypes.shape({
     name: PropTypes.string,
     description: PropTypes.string,
-  }).isRequired
+  }).isRequired,
 };

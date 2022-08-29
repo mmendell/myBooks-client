@@ -12,9 +12,6 @@ import {AuthorView} from '../author-view/author-view';
 import {GenreView} from '../genre-view/genre-view';
 import {NavBar} from '../navbar/navbar';
 
-
-import PropTypes from 'prop-types';
-
 export class MainView extends React.Component {
   constructor() {
     super();
@@ -67,36 +64,39 @@ export class MainView extends React.Component {
             books: response.data,
           });
         })
-        .catch(function (error) {
+        .catch(function(error) {
           console.log(error);
         });
   }
 
   render() {
-    const {books, selectedBook, user} = this.state;
+    const {books, user} = this.state;
 
     return (
       <Router>
         <Row>
-          <NavBar />
+          <NavBar user={user} />
         </Row>
         <Row className='main-view justify-content-md-center'>
-          <Route exact path='/' render={() => {
-            if (!user) return <Col>
-              <LoginView onLoggedIn={(user) => this.onLoggedIn(user)} />
-            </Col>;
-
-            if (books.length === 0) return <div className="main-view" />;
-
-            return books.map((m) => (
-              <Col md={3} key={m._id}>
-                <BookCard book={m} />
+          <Route
+            exact
+            path="/"
+            render={() => {
+              if (!user)
+                return <Col>
+                <LoginView onLoggedIn={(user) => this.onLoggedIn(user)} />
               </Col>
-            ));
-          }} />
-          {/* <Route path="/" .. /> */}
+
+              if (books.length === 0) return <div className='main-view'>
+
+              return books.map(m => (
+                <Col md={3} key={m._id}>
+                  <BookCard book={m} />
+                </Col>
+              ))
+            }} />
           <Route path='/register' render={() => {
-            if (user) return <Redirect to='/' />;
+            if (user) return <Redirect to="/" />
             return <Col>
               <RegistrationView />
             </Col>;

@@ -1,6 +1,6 @@
 
 import React from 'react';
-import {Container, Nav, Navbar} from 'react-bootstrap';
+import {Container, Nav, Navbar, Button } from 'react-bootstrap';
 import {Link} from 'react-router-dom';
 export function NavBar(props) {
   let user = localStorage.getItem('user');
