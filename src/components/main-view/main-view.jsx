@@ -1,6 +1,6 @@
 import React from 'react';
 import axios from 'axios';
-import {BrowserRouter as Router, Route, Redirect, Link} from 'react-router-dom';
+import {BrowserRouter as Router, Route, Redirect, Routes} from 'react-router-dom';
 
 import {Row, Col} from 'react-bootstrap';
 
@@ -73,7 +73,7 @@ export class MainView extends React.Component {
     const {books, user} = this.state;
 
     return (
-      <Router>
+      <Routes>
         <Row>
           <NavBar user={user} />
         </Row>
@@ -127,9 +127,7 @@ export class MainView extends React.Component {
           }} />
 
         </Row>
-      </Router>
+      </Routes>
     );
   }
 }
-
-export default MainView;
