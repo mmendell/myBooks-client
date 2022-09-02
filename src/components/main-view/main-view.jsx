@@ -1,6 +1,12 @@
 import React from 'react';
 import axios from 'axios';
+
+import { Connect } from 'react-redux';
+
 import {BrowserRouter as Router, Routes, Route, Redirect, Link} from 'react-router-dom';
+
+import { setBooks } from '../../actions/actions';
+import BooksList from '../books-list/books-list';
 
 import {Row, Col} from 'react-bootstrap';
 
@@ -11,12 +17,12 @@ import {RegistrationView} from '../registration-view/registration';
 import {AuthorView} from '../author-view/author-view';
 import {GenreView} from '../genre-view/genre-view';
 import {NavBar} from '../navbar/navbar';
+import { connect } from 'mongoose';
 
-export class MainView extends React.Component {
+class MainView extends React.Component {
   constructor() {
     super();
     this.state = {
-      books: [],
       user: null,
     };
   }
@@ -59,18 +65,17 @@ export class MainView extends React.Component {
     axios.get('https://fierce-dawn-45347.herokuapp.com/books', {
       headers: {Authorization: `Bearer ${token}`},
     })
-        .then((response) => {
-          this.setState({
-            books: response.data,
-          });
+        .then(response => {
+          this.props.setBooks(response.data);
         })
-        .catch(function(error) {
+        .catch(function (error) {
           console.log(error);
         });
   }
 
   render() {
-    const {books, user} = this.state;
+    let {books} = this.props;
+    let {user} = this.props;
 
     return (
       <Router>
@@ -87,14 +92,10 @@ export class MainView extends React.Component {
                 <LoginView onLoggedIn={(user) => this.onLoggedIn(user)} />
               </Col>
 
-              if (books.length === 0) return <div className='main-view'>
+              if (books.length === 0) return <div className='main-view'>;
 
-              return books.map(m => (
-                <Col md={3} key={m._id}>
-                  <BookCard book={m} />
-                </Col>
-              ))
-            }} />
+                  return <BooksList books={books}/>;
+
           <Route path='/register' render={() => {
             if (user) return <Redirect to="/" />
             return <Col>
@@ -128,5 +129,8 @@ export class MainView extends React.Component {
     );
   }
 }
+let mapStateToProps = state => {
+  return {books: state.books}
+}
 
-export default MainView;
+export default connect(mapStateToProps, { setBooks} )(MainView);
