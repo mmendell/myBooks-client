@@ -4,13 +4,13 @@ export const SET_FILTER = 'SET_FILTER';
 export function setBooks(value) {
   return {
     type: SET_BOOKS,
-    value
+    value,
   };
 }
 
 export function setFilter(value) {
   return {
     type: SET_FILTER,
-    value
+    value,
   };
 }
