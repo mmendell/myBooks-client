@@ -8,12 +8,11 @@ import './index.scss';
 class myBooksApplication extends React.Component {
   render() {
     return (
-      <Container>
-        <MainView />
-      </Container>
+      <MainView />
     );
   }
 }
+
 
 const container = document.getElementsByClassName('app-container')[0];
 
