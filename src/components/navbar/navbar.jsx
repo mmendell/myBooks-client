@@ -1,23 +1,23 @@
-import React from "react";
-import { Navbar, Container, Nav, Button } from "react-bootstrap";
-import { Link } from "react-router-dom";
+import React from 'react';
+import { Navbar, Container, Nav, Button } from 'react-bootstrap';
+import { Link } from 'react-router-dom';
 
 export function NavBar() {
-  let user = localStorage.getItem("user");
+  let user = localStorage.getItem('user');
 
   const handleLogOut = (e) => {
     e.preventDefault();
     localStorage.clear();
-    window.open("/", "_self");
+    window.open('/', '_self');
     props.onLoggedOut(user);
   };
 
   const isAuth = () => {
-    if (typeof window == "undefined") {
+    if (typeof window == 'undefined') {
       return false;
     }
-    if (localStorage.getItem("token")) {
-      return localStorage.getItem("token");
+    if (localStorage.getItem('token')) {
+      return localStorage.getItem('token');
     } else {
       return false;
     }

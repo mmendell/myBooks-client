@@ -63,76 +63,76 @@ export function UpdateUser(props)
         email: email,
         birthday: birthday,
       },
-        {
-          headers: { Authorization: `Bearer ${token}` }
-        });
-      .then(response =>
-        {
-          console.log(response.data);
-          alert('profile has been updated');
-          window.open('/users/:username', '_self');
-        })
-    .catch(error =>
-    {
-      console.log(error);
-      alert('update was unsuccessful');
-    });
-}
+      {
+        headers: { Authorization: `Bearer ${token}` }
+      })
+          .then(response =>
+          {
+            console.log(response.data);
+            alert('profile has been updated');
+            window.open('/users/:username', '_self');
+          })
+          .catch(error =>
+          {
+            console.log(error);
+            alert('update was unsuccessful');
+          });
+    }
   };
 
-return (
-  <Container>
-    <Row><h3>Edit Profile</h3></Row>
-    <Row>
-      <Form>
-        <Form.Group controlId='formusername'>
-          <Form.Label>Username: </Form.Label>
-          <Form.Control
-            type='text'
-            value={username}
-            onChange={e => setUsername(e.target.value)}
-            placeholder='username'
-            required />
-          {values.usernameErr && <p>{values.usernameErr}</p>}
-        </Form.Group>
+  return (
+    <Container>
+      <Row><h3>Edit Profile</h3></Row>
+      <Row>
+        <Form>
+          <Form.Group controlId='formusername'>
+            <Form.Label>Username: </Form.Label>
+            <Form.Control
+              type='text'
+              value={username}
+              onChange={e => setUsername(e.target.value)}
+              placeholder='username'
+              required />
+            {values.usernameErr && <p>{values.usernameErr}</p>}
+          </Form.Group>
 
-        <Form.Group controlId='formpassword'>
-          <Form.Label>Password: </Form.Label>
-          <Form.Control
-            type='text'
-            value={password}
-            onChange={e => setPassword(e.target.value)}
-            placeholder='password'
-            required />
-          {values.passwordErr && <p>{values.passwordErr}</p>}
-        </Form.Group>
+          <Form.Group controlId='formpassword'>
+            <Form.Label>Password: </Form.Label>
+            <Form.Control
+              type='text'
+              value={password}
+              onChange={e => setPassword(e.target.value)}
+              placeholder='password'
+              required />
+            {values.passwordErr && <p>{values.passwordErr}</p>}
+          </Form.Group>
 
-        <Form.Group controlId='formemail'>
-          <Form.Label>Email: </Form.Label>
-          <Form.Control
-            type='email'
-            value={email}
-            onChange={e => setEmail(e.target.value)}
-            placeholder='dingle@berry.com'
-            required />
-          {values.emailErr && <p>{values.passwordErr}</p>}
-        </Form.Group>
-        <Form.Group controlId="formBirthday">
-          <Form.Label>birthday:</Form.Label>
-          <Form.Control type="text"
-            value={birthday}
-            onChange={e => setBirthday(e.target.value)}
-            placeholder="YYYY-MM-DD" />
-        </Form.Group>
+          <Form.Group controlId='formemail'>
+            <Form.Label>Email: </Form.Label>
+            <Form.Control
+              type='email'
+              value={email}
+              onChange={e => setEmail(e.target.value)}
+              placeholder='dingle@berry.com'
+              required />
+            {values.emailErr && <p>{values.passwordErr}</p>}
+          </Form.Group>
+          <Form.Group controlId="formBirthday">
+            <Form.Label>birthday:</Form.Label>
+            <Form.Control type="text"
+              value={birthday}
+              onChange={e => setBirthday(e.target.value)}
+              placeholder="YYYY-MM-DD" />
+          </Form.Group>
 
-        <Button variant='warning' type="submit" onClick={handleSubmit} >
+          <Button variant='warning' type="submit" onClick={handleSubmit} >
           Update Profile
-        </Button>
-      </Form>
-    </Row>
-  </Container>
+          </Button>
+        </Form>
+      </Row>
+    </Container>
 
-);
+  );
 }
 
 export default UpdateUser;

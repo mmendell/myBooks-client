@@ -1,16 +1,27 @@
 import React from 'react';
 import axios from 'axios';
-import {BrowserRouter as Router, Route, Redirect, Routes} from 'react-router-dom';
 
-import {Row, Col} from 'react-bootstrap';
+import {
+  BrowserRouter as Router,
+  Routes,
+  Route,
+  Redirect,
+  Link,
+} from 'react-router-dom';
 
+import Row from 'react-bootstrap/Row';
+import Col from 'react-bootstrap/Col';
+
+import {NavBar} from '../navbar/navbar';
+import {LoginView} from '../loginView/login-view';
 import {BookCard} from '../book-card/book-card';
 import {BookView} from '../book-view/book-view';
-import {LoginView} from '../loginView/login-view';
-import {RegistrationView} from '../registration-view/registration';
 import {AuthorView} from '../author-view/author-view';
 import {GenreView} from '../genre-view/genre-view';
-import {NavBar} from '../navbar/navbar';
+import {RegistrationView} from '../registration-view/registration';
+
+import {ProfileView} from '../profile-view/profile-view';
+import UpdateUser from '../profile-view/updated-user';
 
 export class MainView extends React.Component {
   constructor() {
@@ -31,11 +42,20 @@ export class MainView extends React.Component {
     }
   }
 
-  setSelectedBook(book) {
-    this.setState({
-      selectedBook: book,
-    });
+  getBooks(token) {
+    axios.get('https://fierce-dawn-45347.herokuapp.com/books', {
+      headers: {Authorization: `Bearer ${token}`},
+    })
+        .then((response) => {
+          this.setState({
+            books: response.data,
+          });
+        })
+        .catch(function(error) {
+          console.log(error);
+        });
   }
+
 
   onLoggedIn(authData) {
     console.log(authData);
@@ -53,30 +73,22 @@ export class MainView extends React.Component {
     this.setState({
       user: null,
     });
+    window.open('/', '_self');
   }
 
-  getBooks(token) {
-    axios.get('https://fierce-dawn-45347.herokuapp.com/books', {
-      headers: {Authorization: `Bearer ${token}`},
-    })
-        .then((response) => {
-          this.setState({
-            books: response.data,
-          });
-        })
-        .catch(function(error) {
-          console.log(error);
-        });
+  setSelectedBook(book) {
+    this.setState({
+      selectedBook: book,
+    });
   }
+
 
   render() {
     const {books, user} = this.state;
 
     return (
-      <Routes>
-        <Row>
-          <NavBar user={user} />
-        </Row>
+      <Router>
+        <NavBar user={user} />
         <Row className='main-view justify-content-md-center'>
           <Route
             exact
@@ -105,29 +117,107 @@ export class MainView extends React.Component {
             </Col>;
           }} />
 
-          <Route path='/books/bookId' render={({match, history}) => {
-            return <Col md={8}>
-              <BookView book={books.find((m) => m._id === match.params.bookId)}
-                onBackClick={() => history.goBack()} />
-            </Col>;
-          }} />
+          <Route
+            path={`/users/${user}`}
+            render={({ history }) => {
+              if (!user) return <Redirect to='/' />;
+              return (
+                <Col>
+                  <ProfileView
+                    user={user}
+                    onBackClick={() => history.goBack()}
+                    books={books}
+                  />
+                </Col>
+              );
+            }}
+          />
 
-          <Route path="/authors/:name" render={({match}) => {
-            if (books.length === 0) return <div className="main-view" />;
-            return <Col md={8}>
-              <AuthorView author={books.find(m => m.author.name === match.params.name).author} />
-            </Col>;
-          }} />
+          <Route
+            path={`/update-user/${user}`}
+            render={({ match, history }) => {
+              if (!user) return <Redirect to='/' />;
+              return (
+                <Col>
+                  <UpdateUser
+                    user={user}
+                    onBackClick={() => history.goBack()}
+                  />
+                </Col>
+              );
+            }}
+          />
 
-          <Route path="/genres/:name" render={({match}) => {
-            if (books.length === 0) return <div className="main-view" />;
-            return <Col md={8}>
-              <GenreView genre={books.find(m => m.genre.name === match.params.name).genre} />
-            </Col>;
-          }} />
+
+          <Route
+            path='/books/:bookId'
+            render={({ match, history }) => {
+              if (!user)
+                return (
+                  <Col>
+                    <LoginView onLoggedIn={(user) => this.onLoggedIn(user)} />
+                  </Col>
+                );
+              if (books.length === 0) return <div className='main-view' />;
+              return (
+                <Col md={8}>
+                  <BookView
+                    book={books.find((m) => m._id === match.params.bookId)}
+                    onBackClick={() => history.goBack()}
+                  />
+                </Col>
+              );
+            }}
+          />
+
+          <Route path="/authors/:name"
+            render={({match}) => {
+              if (!user)
+                return (
+                  <Col>
+                    <LoginView onLoggedIn={(user) => this.onLoggedIn(user)} />
+                  </Col>
+                );
+              if (books.length === 0) return <div className="main-view" />;
+              return (
+                <Col md={8}>
+                  <AuthorView
+                    author={
+                      books.find((m) => m.author.name === match.params.name)
+                          .author
+                    }
+                    onBackClick={() => history.goBack()}
+                  />
+                </Col>
+              );
+            }}
+          />
+
+          <Route
+            path="/genres/:name"
+            render={({ match, history }) => {
+              if (!user)
+                return (
+                  <Col>
+                    <LoginView onLoggedIn={(user) => this.onLoggedIn(user)} />
+                  </Col>
+                );
+              if (books.length === 0) return <div className="main-view" />;
+              return (
+                <Col md={8}>
+                  <GenreView
+                    genre={books.find(m => m.genre.name === match.params.name)
+                        .genre
+                    }
+                    onBackClick={() => history.goBack()}
+                  />
+                </Col>
+              );
+            }}
+          />
 
         </Row>
-      </Routes>
+      </Router>
     );
   }
 }

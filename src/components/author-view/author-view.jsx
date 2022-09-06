@@ -6,7 +6,7 @@ import {Button, Col, Row, Container} from 'react-bootstrap';
 
 export class AuthorView extends React.Component {
   render() {
-    const {author, onBackClick} = this.props;
+    const { author, onBackClick } = this.props;
 
     axios.get('https://fierce-dawn-45347.herokuapp.com/books/author/:id')
 

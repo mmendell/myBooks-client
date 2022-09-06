@@ -23,5 +23,6 @@ module.exports = {
     'react/jsx-uses-vars': 'error',
     'require-jsdoc': 0,
     'linebreak-style': 0,
+    'object-curly-spacing': 0,
   },
 };

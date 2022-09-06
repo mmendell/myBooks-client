@@ -18,6 +18,7 @@ export function ProfileView(props){
 
 
   const getUser = () => {
+    console.log(token);
     axios.get(`https://fierce-dawn-45347.herokuapp.com/user/${currentUser}`, {
       headers: {Authorization: `Bearer ${token}`},
     })

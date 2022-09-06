@@ -1,7 +1,15 @@
 import React, {useState} from 'react';
-import {Form, Button, Card, CardGroup, Container, Col, Row} from 'react-bootstrap';
-import propTypes from 'prop-types';
+import PropTypes from 'prop-types';
+
+import Form from 'react-bootstrap/Form';
+import Button from 'react-bootstrap/Button';
+import Col from 'react-bootstrap/Col';
+import Row from 'react-bootstrap/Row';
+
+import { Link } from 'react-router-dom';
+
 import './registration.scss';
+
 import axios from 'axios';
 
 export function RegistrationView(props) {
@@ -69,72 +77,76 @@ export function RegistrationView(props) {
   };
 
   return (
-    <Container>
-      <Row>
-        <Col>
-          <CardGroup>
-            <Card>
-              <Card.Body>
-
-                <Card.Title>Register</Card.Title>
-                <Form>
-                  <Form.Group>
-                    <Form.Label>Username:</Form.Label>
-                    <Form.Control
-                      type="text"
-                      value={username}
-                      onChange={(e) => setUsername(e.target.value)}
-                      required
-                      placeholder='enter a username'
-                      {...values.usernameErr && <p>{values.usernameErr} </p> }
-                    />
-                  </Form.Group>
-
-                  <Form.Group>
-                    <Form.Label>Password:</Form.Label>
-                    <Form.Control
-                      type="text"
-                      value={password}
-                      onChange={(e) => setPassword(e.target.value)}
-                      required
-                      minLength={8}
-                      placeholder='password must be at least 8 characters'
-                      {...values.passwordErr && <p>{values.passwordErr} </p> }
-                    />
-                  </Form.Group>
-
-                  <Form.Group>
-                    <Form.Label>Email:</Form.Label>
-                    <Form.Control
-                      type="email"
-                      value={email}
-                      onChange={(e) => setEmail(e.target.value)}
-                      required
-                      placeholder='richard@tomsmith.com'
-                      {...values.emailErr && <p>{values.emailErr}</p> }
-                    />
-                  </Form.Group>
-                  <Button variant='primary' type='submit'
-                    onClick={handleSubmit}>Submit</Button>
-
-                </Form>
-              </Card.Body>
-            </Card>
-          </CardGroup>
-
-        </Col>
-      </Row>
-    </Container>
+    <Row className='mt-5'>
+      <Col md={12}>
+        <Form>
+          <h3>SIgn up</h3>
+          <p></p>
 
 
+          <Form.Group controlId='formUSername' className='reg-inputs'>
+            <Form.Label>Username:</Form.Label>
+            <Form.Control
+              type='text'
+              value={username}
+              onChange={(e) => setUsername(e.target.value)}
+            />
+            {values.usernameErr && <p>{values.usernameErr}</p>}
+          </Form.Group>
+
+          <Form.Group controlId='formPassword' className='reg-inputs'>
+            <Form.Label>Password:</Form.Label>
+            <Form.Control
+              type='text'
+              value={password}
+              onChange={(e) => setPassword(e.target.value)}
+            />
+            {values.passwordErr && <p>{values.passwordErr}</p>}
+          </Form.Group>
+
+          <Form.Group controlId='email' className='reg-inputs'>
+            <Form.Label>Email:</Form.Label>
+            <Form.Control
+              type='email'
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
+            />
+            {values.passwordErr && <p>{values.emailErr}</p>}
+          </Form.Group>
+
+          <Form.Group controlId='birthday' className='reg-inputs'>
+            <Form.Label>Birthday</Form.Label>
+            <Form.Control
+              type='date'
+              value={birthday}
+              onChange={(e) => setBirthday(e.target.value)}
+            />
+          </Form.Group>
+
+          <Button
+            className='register'
+            variant='primary'
+            type='submit'
+            onClick={handleSubmit}
+          >
+            Register
+          </Button>
+          <p></p>
+          <p>
+            Already have an account? <Link to={'/'}>Sign in</Link>
+          </p>
+        </Form>
+      </Col>
+    </Row>
   );
 }
 
 RegistrationView.propTypes= {
-  register: propTypes.shape({
-    name: propTypes.string.isRequired,
-    username: propTypes.string.isRequired,
-    password: propTypes.string.isRequired,
-    email: propTypes.string.isRequired,
+  register: PropTypes.shape({
+    name: PropTypes.string.isRequired,
+    username: PropTypes.string.isRequired,
+    password: PropTypes.string.isRequired,
+    email: PropTypes.string.isRequired,
+    birthday: PropTypes.string,
   }),
 };

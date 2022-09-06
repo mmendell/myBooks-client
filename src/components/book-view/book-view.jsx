@@ -2,7 +2,7 @@ import React from 'react';
 import {Button, Container, Row, Col} from 'react-bootstrap';
 import propTypes from 'prop-types';
 
-import Link from 'react-router-dom';
+import {Link} from 'react-router-dom';
 
 export class BookView extends React.Component {
   render() {

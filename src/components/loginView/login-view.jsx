@@ -1,13 +1,13 @@
 import React, { useState } from 'react';
-import axios from 'axios';
 import PropTypes from 'prop-types';
 
 import Form from 'react-bootstrap/Form';
 import Button from 'react-bootstrap/esm/Button';
 
-import RegistrationView from '../registration-view/registration';
+import { Link } from 'react-router-dom';
 import { Container, Nav, Navbar, Form } from 'react-bootstrap';
 import './login-view.scss';
+import axios from 'axios';
 
 
 export function LoginView(props)
@@ -37,12 +37,12 @@ export function LoginView(props)
     return isReq;
   }
 
-  const handleSubmit = (e) => 
-  {
+  const handleSubmit = (e) => {
     e.preventDefault();
     const isReq = validate();
     if(isReq){
-    axios.post('https://fierce-dawn-45347.herokuapp.com/login', {
+    axios
+      .post('https://fierce-dawn-45347.herokuapp.com/login', {
       username: username,
       password: password,
     })
@@ -59,37 +59,55 @@ export function LoginView(props)
   };
 
   return (
-    <Container fluid>
-      <Navbar bg='dark' expand='lg'>
-        <Navbar.Brand href='#Home'>BookENgine</Navbar.Brand>
-        <Navbar.Toggle aria-controls='basic navbar'></Navbar.Toggle>
-        <Navbar.Collapse id='basic navbar'><Nav className='me-auto'>
-          </Nav>
-        </Navbar.Collapse>
-      </Navbar>
+    <Container>
+      <Row>
+        <Col></Col>
+        <Col>
+          <Card className="login">
+            <Card.Body>
+              <Card.Title>Log in</Card.Title>
+              <Form>
+                <Form.Group controlId="formUsername">
+                  <Form.Label>Username:</Form.Label>
+                  <Form.Control
+                    type="text"
+                    placeholder="Enter username"
+                    value={username}
+                    onChange={(e) => setUsername(e.target.value)}
+                  />
+                  {/* code added here to display validation error */}
+                  {usernameErr && <p>{usernameErr}</p>}
+                </Form.Group>
 
-      <Form>
-        <Form.Group controlId='formUsername'>
-          <Form.Label>username</Form.Label>
-          <Form.Control
-            type='text'
-            placeholder='Enter username'
-            value={username}
-            onChange={e => setUsername(e.target.value)} />
-            {usernameErr && <p>{usernameErr}</p>}
-        </Form.Group>
-
-        <Form.Group controlId='formPassword'>
-          <Form.Label>password</Form.Label>
-          <Form.Control
-            type='text'
-            placeholder='Enter password'
-            value={password}
-            onChange={e => setPassword(e.target.value)} />
-            {passwordErr && <p>{passwordErr}</p>}
-        </Form.Group>
-        <Button variant='primary' type='submit' onClick={handleSubmit}>Submit</Button>
-      </Form>
+                <Form.Group controlId="formPassword">
+                  <Form.Label>Password:</Form.Label>
+                  <Form.Control
+                    type="password"
+                    placeholder="Password"
+                    value={password}
+                    onChange={(e) => setPassword(e.target.value)}
+                  />
+                  {/* code added here to display validation error */}
+                  {passwordErr && <p>{passwordErr}</p>}
+                </Form.Group>
+                <Button
+                  className="login-button"
+                  variant="primary"
+                  type="submit"
+                  onClick={handleSubmit}
+                >
+                  Submit
+                </Button>
+                <br></br>
+                <p>
+                  Need an account? <Link to={"/register"}>Sign up</Link>
+                </p>
+              </Form>
+            </Card.Body>
+          </Card>
+        </Col>
+        <Col></Col>
+      </Row>
     </Container>
   );
 }
