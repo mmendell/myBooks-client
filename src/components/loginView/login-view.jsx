@@ -5,56 +5,54 @@ import Form from 'react-bootstrap/Form';
 import Button from 'react-bootstrap/esm/Button';
 
 import { Link } from 'react-router-dom';
-import { Container, Nav, Navbar, Form } from 'react-bootstrap';
+import { Container, Row, Col } from 'react-bootstrap';
+import { Card } from 'react-bootstrap';
 import './login-view.scss';
 import axios from 'axios';
 
 
-export function LoginView(props)
-{
+export function LoginView(props) {
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
 
-  const [usernameErr, setUsernameErr ] = useState('');
-  const [ passwordErr, setPasswordErr ] = useState('');
+  const [usernameErr, setUsernameErr] = useState('');
+  const [passwordErr, setPasswordErr] = useState('');
 
   const validate = () => {
     let isReq = true;
-    if (!username){
+    if (!username) {
       setUsernameErr('Username required');
       isReq = false;
-    }else if(username.length < 4){
+    } else if (username.length < 4) {
       setPasswordErr('username had to be at least 4 characters long');
       isReq= false;
     }
-    if(!password){
+    if (!password) {
       setPasswordErr('Password required');
       isReq= false;
-    }else if(password.length < 8){
+    } else if (password.length < 8) {
       setPasswordErr('Password must be at least 8 charachters long');
       isReq = false;
     }
     return isReq;
-  }
+  };
 
   const handleSubmit = (e) => {
     e.preventDefault();
     const isReq = validate();
-    if(isReq){
-    axios
-      .post('https://fierce-dawn-45347.herokuapp.com/login', {
-      username: username,
-      password: password,
-    })
-      .then(response =>
-      {
-        const data = response.data;
-        props.onLoggedIn(data);
-      })
-      .catch((err) =>
-      {
-        console.log('login failed', err);
-      })
+    if (isReq) {
+      axios
+          .post('https://fierce-dawn-45347.herokuapp.com/login', {
+            username: username,
+            password: password,
+          })
+          .then(response => {
+            const data = response.data;
+            props.onLoggedIn(data);
+          })
+          .catch((err) => {
+            console.log('login failed', err);
+          });
     }
   };
 
@@ -100,7 +98,7 @@ export function LoginView(props)
                 </Button>
                 <br></br>
                 <p>
-                  Need an account? <Link to={"/register"}>Sign up</Link>
+                  Need an account? <Link to={'/register'}>Sign up</Link>
                 </p>
               </Form>
             </Card.Body>

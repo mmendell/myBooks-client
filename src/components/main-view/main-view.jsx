@@ -1,5 +1,7 @@
 import React from 'react';
 import axios from 'axios';
+import { connect } from 'react-redux';
+import { PropTypes } from 'React';
 
 import {
   BrowserRouter as Router,
@@ -14,20 +16,20 @@ import Col from 'react-bootstrap/Col';
 
 import {NavBar} from '../navbar/navbar';
 import {LoginView} from '../loginView/login-view';
-import {BookCard} from '../book-card/book-card';
 import {BookView} from '../book-view/book-view';
 import {AuthorView} from '../author-view/author-view';
 import {GenreView} from '../genre-view/genre-view';
 import {RegistrationView} from '../registration-view/registration';
+import booksList from '../books-list/booksList';
+import { setBooks, setUser } from '../../actions/actions';
 
 import {ProfileView} from '../profile-view/profile-view';
 import UpdateUser from '../profile-view/updated-user';
 
-export class MainView extends React.Component {
+class MainView extends React.Component {
   constructor() {
     super();
     this.state = {
-      books: [],
       user: null,
     };
   }
@@ -47,9 +49,7 @@ export class MainView extends React.Component {
       headers: {Authorization: `Bearer ${token}`},
     })
         .then((response) => {
-          this.setState({
-            books: response.data,
-          });
+          this.props.setBooks(response.data);
         })
         .catch(function(error) {
           console.log(error);
@@ -84,7 +84,8 @@ export class MainView extends React.Component {
 
 
   render() {
-    const {books, user} = this.state;
+    let { books } = this.props;
+    let { user } = this.props;
 
     return (
       <Router>
@@ -97,17 +98,11 @@ export class MainView extends React.Component {
               if (!user)
                 return (
                   <Col>
-                    <BookView
-                      books={books}
-                      onLoggedIn={(user) => this.onLoggedIn(user)} />
+                   <LoginView onLoggedIn={user => this.onLoggedIn(user)} />
                   </Col>
                 );
               if (books.length === 0) return <div className='main-view' />;
-              return books.map((m) => (
-                <Col md={3} key={m._id}>
-                  <BookCard book={m} />
-                </Col>
-              ));
+              return <booksList books={books} />;
             }}
           />
           <Route path='/register' render={() => {
@@ -221,3 +216,9 @@ export class MainView extends React.Component {
     );
   }
 }
+
+let mapStateToProps = state => {
+  return { books: state.books };
+};
+
+export default connect(mapStateToProps, { setBooks })(MainView);

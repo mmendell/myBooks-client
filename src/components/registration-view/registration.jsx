@@ -27,10 +27,6 @@ export function RegistrationView(props) {
 
   const validate = () => {
     let isReq = true;
-    if (name) {
-      setValues({...values, nameErr: 'name is required'});
-      isReq = false;
-    }
     if (!username) {
       setValues({...values, usernameErr: 'username required'});
       isReq = false;
@@ -70,8 +66,8 @@ export function RegistrationView(props) {
             console.log(data);
             window.open('/', '_self');
           })
-          .catch((e) => {
-            console.log('error registering');
+          .catch((error) => {
+            console.log('error registering', error.response.data);
           });
     }
   };
@@ -143,7 +139,6 @@ export function RegistrationView(props) {
 
 RegistrationView.propTypes= {
   register: PropTypes.shape({
-    name: PropTypes.string.isRequired,
     username: PropTypes.string.isRequired,
     password: PropTypes.string.isRequired,
     email: PropTypes.string.isRequired,

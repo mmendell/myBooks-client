@@ -9,8 +9,8 @@ const mapStateToProps = state => {
   const {visibilityFilter} = state;
   return {visibilityFilter};
 };
-9
-function BooksList(prrops) {
+
+function BooksList(props) {
   const {books, visibilityFilter} = props;
   let filteredBooks = books;
 
