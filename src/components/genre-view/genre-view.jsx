@@ -17,7 +17,10 @@ export class GenreView extends React.Component {
           <Col className="label">Description</Col>
           <Col className="value">{genre.description}</Col>
         </Row>
-        <Button onClick={() => {onBackClick(null); }} variant='primary'>Back</Button>
+        <Button
+          onClick={() => {onBackClick(null); }}
+          variant='primary'>
+          Back</Button>
       </Container>
     );
   }
@@ -28,4 +31,5 @@ GenreView.PropTypes = {
     name: PropTypes.string,
     description: PropTypes.string,
   }).isRequired,
+  onBackClick: PropTypes.func.isRequired,
 };

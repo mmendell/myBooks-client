@@ -1,6 +1,9 @@
 import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 
+import { connect } from 'react-redux';
+import { setUser } from '../../actions/actions';
+
 import Form from 'react-bootstrap/Form';
 import Button from 'react-bootstrap/esm/Button';
 
@@ -110,12 +113,12 @@ export function LoginView(props) {
   );
 }
 
+const mapStateToProps = state => {
+  return { user: state.user };
+};
+
 LoginView.propTypes = {
-  user: PropTypes.shape({
-    username: PropTypes.string.isRequired,
-    password: PropTypes.string.isRequired,
-    email: PropTypes.string.isRequired,
-    birthday: PropTypes.number,
-  }),
   onLoggedIn: PropTypes.func.isRequired,
 };
+
+export default connect(mapStateToProps, { setUser })(LoginView);

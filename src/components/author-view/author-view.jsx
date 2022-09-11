@@ -36,4 +36,5 @@ AuthorView.PropTypes = {
     bio: PropTypes.string.isRequired,
     birthday: PropTypes.string.isRequired,
   }).isRequired,
+  onBackClick: PropTypes.func.isRequired,
 };

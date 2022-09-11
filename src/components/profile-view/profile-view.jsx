@@ -1,18 +1,18 @@
-import React from "react";
+import React from 'react';
 import PropTypes from 'prop-types';
-import  axios from 'axios';
+import axios from 'axios';
 
-import { FavoriteBookV } from "./favorite-book";
-import UpdateUser from "./updated-user";
+import { FavoriteBookV } from './favorite-book';
+import UpdateUser from './updated-user';
 
 import { Button, Col, Row, Container } from 'react-bootstrap';
-import { useState } from "react";
-import { useEffect } from "react";
+import { useState } from 'react';
+import { useEffect } from 'react';
 
 export function ProfileView(props) {
   const [user, setUser] = useState(props.user);
   const [books, setBooks] = useState(props.books);
-  const [FavoriteBooks, SetFavoriteBooks] = useState(props.FavoriteBooks);
+  const [FavoriteBooks, setFavoriteBooks] = useState(props.FavoriteBooks);
   const currentUser = localStorage.getItem('user');
   const token = localStorage.getItem('token');
 
@@ -24,12 +24,12 @@ export function ProfileView(props) {
     })
         .then(response => {
           setUser(response.data);
-          SetFavoriteBooks(response.data.FavoriteBooks);
+          setFavoriteBooks(response.data.FavoriteBooks);
         })
         .catch(function(error) {
           console.log('failed to retrieve data', error);
-        })
-  }
+        });
+  };
 
   useEffect(() => {
     getUser();
@@ -41,9 +41,9 @@ export function ProfileView(props) {
       headers: {Authorization: `Bearer ${token}`},
     })
         .then(() => {
-          alert(`${user.name}'s account was successfully deleted.`)
+          alert(`${user.name}'s account was successfully deleted.`);
           localStorage.clear();
-          window.open('/register','_self');
+          window.open('/register', '_self');
         })
         .catch((err) => console.log(err));
   };
@@ -72,7 +72,7 @@ export function ProfileView(props) {
       </Row>
 
       <Row className="mt-5"><h3>favoite books</h3></Row>
-    
+
       <Row className="mt-3">
         <FavoriteBookV
           books={books}
@@ -82,8 +82,11 @@ export function ProfileView(props) {
 
       </Row>
       <UpdateUser user={user}/>
-      <Button className="d-block mt-5" variant="danger" onClick={handleDelete}>Delete Account</Button>
+      <Button
+        className="d-block mt-5"
+        variant="danger"
+        onClick={handleDelete}>Delete Account</Button>
 
     </Container>
-  )
+  );
 };

@@ -1,7 +1,7 @@
 import React from 'react';
 import axios from 'axios';
 import { connect } from 'react-redux';
-import { PropTypes } from 'React';
+import PropTypes from 'prop-types';
 
 import {
   BrowserRouter as Router,
@@ -29,9 +29,6 @@ import UpdateUser from '../profile-view/updated-user';
 class MainView extends React.Component {
   constructor() {
     super();
-    this.state = {
-      user: null,
-    };
   }
 
   componentDidMount() {
@@ -84,8 +81,7 @@ class MainView extends React.Component {
 
 
   render() {
-    let { books } = this.props;
-    let { user } = this.props;
+    const { books, user } = this.props;
 
     return (
       <Router>
@@ -98,13 +94,15 @@ class MainView extends React.Component {
               if (!user)
                 return (
                   <Col>
-                   <LoginView onLoggedIn={user => this.onLoggedIn(user)} />
+                    <LoginView onLoggedIn={user => this.onLoggedIn(user)} />
                   </Col>
                 );
+
               if (books.length === 0) return <div className='main-view' />;
               return <booksList books={books} />;
             }}
           />
+
           <Route path='/register' render={() => {
             if (user) return <Redirect to="/" />;
             return <Col>
@@ -217,8 +215,27 @@ class MainView extends React.Component {
   }
 }
 
+MainView.propTypes={
+  books: PropTypes.shape({
+    Title: PropTypes.string.isRequired,
+    Genre: PropTypes.shape({
+      name: PropTypes.string.isRequired,
+      description: PropTypes.string.isRequired,
+    }),
+    Author: PropTypes.shape ({
+      Name: PropTypes.string.isRequired,
+      bio: PropTypes.string.isRequired,
+    }),
+  }),
+  user: PropTypes.string.isRequired,
+};
+
 let mapStateToProps = state => {
-  return { books: state.books };
+  return {
+    books: state.books,
+    user: state.user,
+    favorites: state.favorites,
+  };
 };
 
 export default connect(mapStateToProps, { setBooks })(MainView);

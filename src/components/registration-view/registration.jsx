@@ -13,6 +13,7 @@ import './registration.scss';
 import axios from 'axios';
 
 export function RegistrationView(props) {
+  const [name, setName] = useState('');
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
   const [email, setEmail] = useState('');
@@ -57,6 +58,7 @@ export function RegistrationView(props) {
     const isReq = validate();
     if (isReq) {
       axios.post('https://fierce-dawn-45347.herokuapp.com/users', {
+        name: name,
         username: username,
         password: password,
         email: email,
@@ -79,6 +81,14 @@ export function RegistrationView(props) {
           <h3>SIgn up</h3>
           <p></p>
 
+          <Form.Group controlId='formName' className='reg-inputs'>
+            <Form.Label> Name:</Form.Label>
+            <Form.Control
+              type='text'
+              value={name}
+              onChange={(e) => setName(e.target.value)}
+            />
+          </Form.Group>
 
           <Form.Group controlId='formUSername' className='reg-inputs'>
             <Form.Label>Username:</Form.Label>
@@ -139,6 +149,7 @@ export function RegistrationView(props) {
 
 RegistrationView.propTypes= {
   register: PropTypes.shape({
+    name: PropTypes.string.isRequired,
     username: PropTypes.string.isRequired,
     password: PropTypes.string.isRequired,
     email: PropTypes.string.isRequired,

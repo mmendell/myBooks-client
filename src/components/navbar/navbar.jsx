@@ -1,4 +1,8 @@
 import React from 'react';
+import PropTypes from 'prop-types';
+import { connect } from 'react-redux';
+import { setUser } from '../../actions/actions';
+
 import { Navbar, Container, Nav, Button } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
 
@@ -50,3 +54,9 @@ export function NavBar() {
     </Navbar>
   );
 }
+
+let mapStateToProps = {
+  user: PropTypes.string.isRequired,
+};
+
+export default connect(mapStateToProps, { setUser })(NavBar);
