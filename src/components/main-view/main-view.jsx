@@ -29,6 +29,9 @@ import UpdateUser from '../profile-view/updated-user';
 class MainView extends React.Component {
   constructor() {
     super();
+    this.state = {
+      user: null,
+    };
   }
 
   componentDidMount() {
@@ -222,7 +225,7 @@ MainView.propTypes={
       name: PropTypes.string.isRequired,
       description: PropTypes.string.isRequired,
     }),
-    Author: PropTypes.shape ({
+    Author: PropTypes.shape({
       Name: PropTypes.string.isRequired,
       bio: PropTypes.string.isRequired,
     }),
