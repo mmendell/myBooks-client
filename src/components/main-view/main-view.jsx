@@ -20,7 +20,7 @@ import {BookView} from '../book-view/book-view';
 import {AuthorView} from '../author-view/author-view';
 import {GenreView} from '../genre-view/genre-view';
 import {RegistrationView} from '../registration-view/registration';
-import booksList from '../books-list/booksList';
+import BooksList from '../books-list/BooksList';
 import { setBooks, setUser } from '../../actions/actions';
 
 import {ProfileView} from '../profile-view/profile-view';
@@ -37,7 +37,7 @@ class MainView extends React.Component {
   componentDidMount() {
     const accessToken = localStorage.getItem('token');
     if (accessToken !== null) {
-      this.setState({
+      this.props.setUser({
         user: localStorage.getItem('user'),
       });
       this.getBooks(accessToken);
@@ -102,7 +102,7 @@ class MainView extends React.Component {
                 );
 
               if (books.length === 0) return <div className='main-view' />;
-              return <booksList books={books} />;
+              return <BooksList books={books} />;
             }}
           />
 
@@ -166,7 +166,7 @@ class MainView extends React.Component {
             }}
           />
 
-          <Route path="/authors/:name"
+          <Route path="/books/authors/:name"
             render={({match}) => {
               if (!user)
                 return (
@@ -226,7 +226,7 @@ MainView.propTypes={
       description: PropTypes.string.isRequired,
     }),
     Author: PropTypes.shape({
-      Name: PropTypes.string.isRequired,
+      name: PropTypes.string.isRequired,
       bio: PropTypes.string.isRequired,
     }),
   }),
@@ -241,4 +241,4 @@ let mapStateToProps = state => {
   };
 };
 
-export default connect(mapStateToProps, { setBooks })(MainView);
+export default connect(mapStateToProps, { setBooks, setUser })(MainView);

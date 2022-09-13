@@ -6,4 +6,20 @@
 
 
 
+.navbar {
+  background: #e91818;
+  border-radius: 1rem;
+}
+
+.nav-text:hover {
+  transition: all .2s linear;
+  transform: scale(1.15);
+}
+
+.nav-icon {
+  margin: 10px;
+  padding-bottom: 3px;
+  transform: scale(1.5);
+}
+
 /*# sourceMappingURL=index.ce1d6491.css.map */

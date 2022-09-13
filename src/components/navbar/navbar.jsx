@@ -5,6 +5,7 @@ import { setUser } from '../../actions/actions';
 
 import { Navbar, Container, Nav, Button } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
+import './navbar.scss';
 
 export function NavBar() {
   let user = localStorage.getItem('user');

@@ -4,13 +4,14 @@ import axios from 'axios';
 
 import {Link} from 'react-router-dom';
 import {Button, Card, Col} from 'react-bootstrap';
+import { connect } from 'react-redux';
 
-export function FavoriteBookV(props) {
-  const {book, FavoriteBooks, currentUser, token} = props;
+function FavoriteBookV(props) {
+  const {books, FavoriteBooks, currentUser, token} = props;
 
   const favoriteBookId = FavoriteBooks.map(m => m._id);
 
-  const FavoriteBooksList = books.filter(m => {
+  const FavoriteBooksList = books.filter((m) => {
     return favoriteBookId.includes(m._id);
   });
 
@@ -65,3 +66,12 @@ export function FavoriteBookV(props) {
     </Fragment>
   );
 }
+
+let mapStateToProps = state => {
+  return {
+    books: state.books,
+    user: state.user,
+    favorites: state.favorites,
+  };
+};
+

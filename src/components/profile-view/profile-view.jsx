@@ -1,17 +1,17 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import axios from 'axios';
-
+import {setUser} from '../../actions/actions';
 import { FavoriteBookV } from './favorite-book';
-import UpdateUser from './updated-user';
+import { Link } from 'react-router-dom';
 
 import { Button, Col, Row, Container } from 'react-bootstrap';
 import { useState } from 'react';
 import { useEffect } from 'react';
+import { connect } from 'react-redux';
 
-export function ProfileView(props) {
+function ProfileView(props) {
   const [user, setUser] = useState(props.user);
-  const [books, setBooks] = useState(props.books);
   const [FavoriteBooks, setFavoriteBooks] = useState(props.FavoriteBooks);
   const currentUser = localStorage.getItem('user');
   const token = localStorage.getItem('token');
@@ -81,12 +81,27 @@ export function ProfileView(props) {
           token={token} />
 
       </Row>
-      <UpdateUser user={user}/>
+      <Link to={`/users-update/`}>
+        <Button className='mb-2 ml-2 button' variant='info'>
+          Update your Profile
+        </Button>
+      </Link>
       <Button
         className="d-block mt-5"
         variant="danger"
-        onClick={handleDelete}>Delete Account</Button>
+        onClick={handleDelete}>Delete Account
+      </Button>
 
     </Container>
   );
 };
+
+let mapStateToProps = state => {
+  return {
+    books: state.books,
+    user: state.user,
+    favorites: state.favorites,
+  };
+};
+
+export default connect(mapStateToProps, { setUser})(ProfileView);

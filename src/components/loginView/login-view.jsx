@@ -52,6 +52,7 @@ export function LoginView(props) {
           .then(response => {
             const data = response.data;
             props.onLoggedIn(data);
+            props.setUser(data);
           })
           .catch((err) => {
             console.log('login failed', err);
@@ -72,7 +73,7 @@ export function LoginView(props) {
                   <Form.Label>Username:</Form.Label>
                   <Form.Control
                     type="text"
-                    placeholder="Enter username"
+                    placeholder="TomSmith"
                     value={username}
                     onChange={(e) => setUsername(e.target.value)}
                   />
@@ -113,11 +114,12 @@ export function LoginView(props) {
   );
 }
 
-const mapStateToProps = state => {
+let mapStateToProps = state => {
   return { user: state.user };
 };
 
 LoginView.propTypes = {
+  setUser: PropTypes.func.isRequired,
   onLoggedIn: PropTypes.func.isRequired,
 };
 

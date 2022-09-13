@@ -1,0 +1,17 @@
+$navColor: rgb(233, 24, 24);
+
+.navbar {
+  background: $navColor;
+  border-radius: 1rem;
+}
+
+.nav-text:hover {
+  transform: scale(1.15);
+  transition: linear 0.2s;
+}
+
+.nav-icon {
+  transform: scale(1.5);
+  margin: 10px;
+  padding-bottom: 3px;
+}
