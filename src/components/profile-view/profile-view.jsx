@@ -16,6 +16,7 @@ function ProfileView(props) {
   const currentUser = localStorage.getItem('user');
   const token = localStorage.getItem('token');
 
+  const { books, user } = this.props;
 
   const getUser = () => {
     console.log(token);
