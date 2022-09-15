@@ -23,7 +23,7 @@ import {RegistrationView} from '../registration-view/registration';
 import BooksList from '../books-list/BooksList';
 import { setBooks, setUser } from '../../actions/actions';
 
-import {ProfileView} from '../profile-view/profile-view';
+import ProfileView from '../profile-view/profile-view';
 import UpdateUser from '../profile-view/updated-user';
 
 class MainView extends React.Component {

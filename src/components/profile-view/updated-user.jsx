@@ -1,10 +1,10 @@
 import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import axios from 'axios';
-
+import { connect } from 'react-redux';
 import { Button, Col, Container, Form, Row } from 'react-bootstrap';
 
-export function UpdateUser(props)
+function UpdateUser(props)
 {
   const { user } = props;
   const [username, setUsername] = useState('');
@@ -135,4 +135,10 @@ export function UpdateUser(props)
   );
 }
 
-export default UpdateUser;
+const mapStateToProps = state => {
+  return {
+    user: state.user,
+  };
+};
+
+// export default connect(mapStateToProps, { setUser })(UpdateUser);

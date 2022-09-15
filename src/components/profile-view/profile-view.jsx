@@ -104,4 +104,13 @@ let mapStateToProps = state => {
   };
 };
 
+ProfileView.propTypes = {
+  user: PropTypes.shape({
+    username: PropTypes.string.isRequired,
+    password: PropTypes.string.isRequired,
+    email: PropTypes.string.isRequired,
+    birthday: PropTypes.string,
+  }).isRequired,
+};
+
 export default connect(mapStateToProps, { setUser})(ProfileView);

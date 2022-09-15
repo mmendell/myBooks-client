@@ -1,6 +1,6 @@
 import React from 'react';
 import {Button, Container, Row, Col} from 'react-bootstrap';
-import propTypes from 'prop-types';
+import PropTypes from 'prop-types';
 
 import {Link} from 'react-router-dom';
 
@@ -79,18 +79,18 @@ export class BookView extends React.Component {
   }
 }
 BookView.propTypes = {
-  book: propTypes.shape({
-    title: propTypes.string.isRequired,
-    description: propTypes.string.isRequired,
-    genre: propTypes.shape({
-      name: propTypes.string.isRequired,
-      description: propTypes.string.isRequired,
+  book: PropTypes.shape({
+    title: PropTypes.string.isRequired,
+    description: PropTypes.string.isRequired,
+    genre: PropTypes.shape({
+      name: PropTypes.string.isRequired,
+      description: PropTypes.string.isRequired,
     }),
-    author: propTypes.shape({
-      name: propTypes.string.isRequired,
-      bio: propTypes.string,
-      birthday: propTypes.string,
+    author: PropTypes.shape({
+      name: PropTypes.string.isRequired,
+      bio: PropTypes.string,
+      birthday: PropTypes.string,
     }),
   }).isRequired,
-  onBookClick: propTypes.func.isRequired,
+  onBookClick: PropTypes.func.isRequired,
 };

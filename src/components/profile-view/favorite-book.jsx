@@ -2,9 +2,9 @@ import React, {Fragment, useState} from 'react';
 import PropTypes from 'prop-types';
 import axios from 'axios';
 
+import { connect } from 'react-redux';
 import {Link} from 'react-router-dom';
 import {Button, Card, Col} from 'react-bootstrap';
-import { connect } from 'react-redux';
 
 function FavoriteBookV(props) {
   const {books, FavoriteBooks, currentUser, token} = props;
@@ -75,3 +75,4 @@ let mapStateToProps = state => {
   };
 };
 
+export default connect(mapStateToProps, { books })(FavoriteBookV)

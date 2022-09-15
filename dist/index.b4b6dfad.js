@@ -28250,6 +28250,7 @@ var _booksList = require("../books-list/BooksList");
 var _booksListDefault = parcelHelpers.interopDefault(_booksList);
 var _actions = require("../../actions/actions");
 var _profileView = require("../profile-view/profile-view");
+var _profileViewDefault = parcelHelpers.interopDefault(_profileView);
 var _updatedUser = require("../profile-view/updated-user");
 var _updatedUserDefault = parcelHelpers.interopDefault(_updatedUser);
 class MainView extends (0, _reactDefault.default).Component {
@@ -28358,7 +28359,7 @@ class MainView extends (0, _reactDefault.default).Component {
                                     to: "/"
                                 }, void 0, false, void 0, void 0);
                                 return /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _colDefault.default), {
-                                    children: /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _profileView.ProfileView), {
+                                    children: /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _profileViewDefault.default), {
                                         user: user,
                                         onBackClick: ()=>history1.goBack(),
                                         books: books
@@ -49015,6 +49016,14 @@ let mapStateToProps = (state)=>{
         favorites: state.favorites
     };
 };
+ProfileView.propTypes = {
+    user: (0, _propTypesDefault.default).shape({
+        username: (0, _propTypesDefault.default).string.isRequired,
+        password: (0, _propTypesDefault.default).string.isRequired,
+        email: (0, _propTypesDefault.default).string.isRequired,
+        birthday: (0, _propTypesDefault.default).string
+    }).isRequired
+};
 exports.default = (0, _reactRedux.connect)(mapStateToProps, {
     setUser: (0, _actions.setUser)
 })(ProfileView);
@@ -49034,6 +49043,7 @@ $parcel$ReactRefreshHelpers$5a73.prelude(module);
 
 try {
 var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
+parcelHelpers.defineInteropFlag(exports);
 var _jsxDevRuntime = require("react/jsx-dev-runtime");
 var _react = require("react");
 var _reactDefault = parcelHelpers.interopDefault(_react);
@@ -49041,13 +49051,13 @@ var _propTypes = require("prop-types");
 var _propTypesDefault = parcelHelpers.interopDefault(_propTypes);
 var _axios = require("axios");
 var _axiosDefault = parcelHelpers.interopDefault(_axios);
+var _reactRedux = require("react-redux");
 var _reactRouterDom = require("react-router-dom");
 var _reactBootstrap = require("react-bootstrap");
-var _reactRedux = require("react-redux");
 function FavoriteBookV(props) {
-    const { books , FavoriteBooks , currentUser , token  } = props;
+    const { books: books1 , FavoriteBooks , currentUser , token  } = props;
     const favoriteBookId = FavoriteBooks.map((m)=>m._id);
-    const FavoriteBooksList = books.filter((m)=>{
+    const FavoriteBooksList = books1.filter((m)=>{
         return favoriteBookId.includes(m._id);
     });
     const handleBookDelete = (bookId)=>{
@@ -49169,6 +49179,9 @@ let mapStateToProps = (state)=>{
         favorites: state.favorites
     };
 };
+exports.default = (0, _reactRedux.connect)(mapStateToProps, {
+    books
+})(FavoriteBookV);
 var _c;
 $RefreshReg$(_c, "FavoriteBookV");
 
@@ -49185,8 +49198,6 @@ $parcel$ReactRefreshHelpers$798b.prelude(module);
 
 try {
 var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
-parcelHelpers.defineInteropFlag(exports);
-parcelHelpers.export(exports, "UpdateUser", ()=>UpdateUser);
 var _jsxDevRuntime = require("react/jsx-dev-runtime");
 var _react = require("react");
 var _reactDefault = parcelHelpers.interopDefault(_react);
@@ -49194,6 +49205,7 @@ var _propTypes = require("prop-types");
 var _propTypesDefault = parcelHelpers.interopDefault(_propTypes);
 var _axios = require("axios");
 var _axiosDefault = parcelHelpers.interopDefault(_axios);
+var _reactRedux = require("react-redux");
 var _reactBootstrap = require("react-bootstrap");
 var _s = $RefreshSig$();
 function UpdateUser(props) {
@@ -49451,7 +49463,11 @@ function UpdateUser(props) {
 }
 _s(UpdateUser, "rcDCrvt67ml5p/LWmJ1Y6Fr4xcY=");
 _c = UpdateUser;
-exports.default = UpdateUser;
+const mapStateToProps = (state)=>{
+    return {
+        user: state.user
+    };
+}; // export default connect(mapStateToProps, { setUser })(UpdateUser);
 var _c;
 $RefreshReg$(_c, "UpdateUser");
 
@@ -49460,7 +49476,7 @@ $RefreshReg$(_c, "UpdateUser");
   window.$RefreshReg$ = prevRefreshReg;
   window.$RefreshSig$ = prevRefreshSig;
 }
-},{"react/jsx-dev-runtime":"iTorj","react":"21dqq","prop-types":"7wKI2","axios":"jo6P5","react-bootstrap":"3AD9A","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"km3Ru"}],"k60w4":[function(require,module,exports) {
+},{"react/jsx-dev-runtime":"iTorj","react":"21dqq","prop-types":"7wKI2","axios":"jo6P5","react-bootstrap":"3AD9A","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"km3Ru","react-redux":"bdVon"}],"k60w4":[function(require,module,exports) {
 var $parcel$ReactRefreshHelpers$0024 = require("@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js");
 var prevRefreshReg = window.$RefreshReg$;
 var prevRefreshSig = window.$RefreshSig$;
@@ -49660,7 +49676,7 @@ function visibilityFilterInput(props) {
         placeholder: "filter"
     }, void 0, false, {
         fileName: "src/components/visibiltity-filter-input/visibility-filter-input.jsx",
-        lineNumber: 9,
+        lineNumber: 10,
         columnNumber: 10
     }, this);
 }
