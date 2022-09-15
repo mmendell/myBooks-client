@@ -1,10 +1,9 @@
 import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import axios from 'axios';
-import { connect } from 'react-redux';
 import { Button, Col, Container, Form, Row } from 'react-bootstrap';
 
-function UpdateUser(props)
+export function UpdateUser(props)
 {
   const { user } = props;
   const [username, setUsername] = useState('');
@@ -57,7 +56,7 @@ function UpdateUser(props)
     if (isReq)
     {
       const token = localStorage.getItem('token');
-      axios.put(`https://fierce-dawn-45347.herokuapp.com/users/${user.username}`, {
+      axios.put(`https://fierce-dawn-45347.herokuapp.com/users/${username}`, {
         username: username,
         password: password,
         email: email,
@@ -141,4 +140,4 @@ const mapStateToProps = state => {
   };
 };
 
-// export default connect(mapStateToProps, { setUser })(UpdateUser);
+export default UpdateUser;

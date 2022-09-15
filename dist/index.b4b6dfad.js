@@ -46358,7 +46358,8 @@ function LoginView(props) {
         }).then((response)=>{
             const data = response.data;
             props.onLoggedIn(data);
-            props.setUser(data);
+            this.props.setUser(data);
+            window.location.reload();
         }).catch((err)=>{
             console.log("login failed", err);
         });
@@ -46368,7 +46369,7 @@ function LoginView(props) {
             children: [
                 /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactBootstrap.Col), {}, void 0, false, {
                     fileName: "src/components/loginView/login-view.jsx",
-                    lineNumber: 66,
+                    lineNumber: 67,
                     columnNumber: 9
                 }, this),
                 /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactBootstrap.Col), {
@@ -46380,7 +46381,7 @@ function LoginView(props) {
                                     children: "Log in"
                                 }, void 0, false, {
                                     fileName: "src/components/loginView/login-view.jsx",
-                                    lineNumber: 70,
+                                    lineNumber: 71,
                                     columnNumber: 15
                                 }, this),
                                 /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _formDefault.default), {
@@ -46392,7 +46393,7 @@ function LoginView(props) {
                                                     children: "Username:"
                                                 }, void 0, false, {
                                                     fileName: "src/components/loginView/login-view.jsx",
-                                                    lineNumber: 73,
+                                                    lineNumber: 74,
                                                     columnNumber: 19
                                                 }, this),
                                                 /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _formDefault.default).Control, {
@@ -46402,20 +46403,20 @@ function LoginView(props) {
                                                     onChange: (e)=>setUsername(e.target.value)
                                                 }, void 0, false, {
                                                     fileName: "src/components/loginView/login-view.jsx",
-                                                    lineNumber: 74,
+                                                    lineNumber: 75,
                                                     columnNumber: 19
                                                 }, this),
                                                 usernameErr && /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("p", {
                                                     children: usernameErr
                                                 }, void 0, false, {
                                                     fileName: "src/components/loginView/login-view.jsx",
-                                                    lineNumber: 81,
+                                                    lineNumber: 82,
                                                     columnNumber: 35
                                                 }, this)
                                             ]
                                         }, void 0, true, {
                                             fileName: "src/components/loginView/login-view.jsx",
-                                            lineNumber: 72,
+                                            lineNumber: 73,
                                             columnNumber: 17
                                         }, this),
                                         /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _formDefault.default).Group, {
@@ -46425,7 +46426,7 @@ function LoginView(props) {
                                                     children: "Password:"
                                                 }, void 0, false, {
                                                     fileName: "src/components/loginView/login-view.jsx",
-                                                    lineNumber: 85,
+                                                    lineNumber: 86,
                                                     columnNumber: 19
                                                 }, this),
                                                 /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _formDefault.default).Control, {
@@ -46435,20 +46436,20 @@ function LoginView(props) {
                                                     onChange: (e)=>setPassword(e.target.value)
                                                 }, void 0, false, {
                                                     fileName: "src/components/loginView/login-view.jsx",
-                                                    lineNumber: 86,
+                                                    lineNumber: 87,
                                                     columnNumber: 19
                                                 }, this),
                                                 passwordErr && /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("p", {
                                                     children: passwordErr
                                                 }, void 0, false, {
                                                     fileName: "src/components/loginView/login-view.jsx",
-                                                    lineNumber: 93,
+                                                    lineNumber: 94,
                                                     columnNumber: 35
                                                 }, this)
                                             ]
                                         }, void 0, true, {
                                             fileName: "src/components/loginView/login-view.jsx",
-                                            lineNumber: 84,
+                                            lineNumber: 85,
                                             columnNumber: 17
                                         }, this),
                                         /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _buttonDefault.default), {
@@ -46459,12 +46460,12 @@ function LoginView(props) {
                                             children: "Submit"
                                         }, void 0, false, {
                                             fileName: "src/components/loginView/login-view.jsx",
-                                            lineNumber: 95,
+                                            lineNumber: 96,
                                             columnNumber: 17
                                         }, this),
                                         /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("br", {}, void 0, false, {
                                             fileName: "src/components/loginView/login-view.jsx",
-                                            lineNumber: 103,
+                                            lineNumber: 104,
                                             columnNumber: 17
                                         }, this),
                                         /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("p", {
@@ -46475,51 +46476,51 @@ function LoginView(props) {
                                                     children: "Sign up"
                                                 }, void 0, false, {
                                                     fileName: "src/components/loginView/login-view.jsx",
-                                                    lineNumber: 105,
+                                                    lineNumber: 106,
                                                     columnNumber: 36
                                                 }, this)
                                             ]
                                         }, void 0, true, {
                                             fileName: "src/components/loginView/login-view.jsx",
-                                            lineNumber: 104,
+                                            lineNumber: 105,
                                             columnNumber: 17
                                         }, this)
                                     ]
                                 }, void 0, true, {
                                     fileName: "src/components/loginView/login-view.jsx",
-                                    lineNumber: 71,
+                                    lineNumber: 72,
                                     columnNumber: 15
                                 }, this)
                             ]
                         }, void 0, true, {
                             fileName: "src/components/loginView/login-view.jsx",
-                            lineNumber: 69,
+                            lineNumber: 70,
                             columnNumber: 13
                         }, this)
                     }, void 0, false, {
                         fileName: "src/components/loginView/login-view.jsx",
-                        lineNumber: 68,
+                        lineNumber: 69,
                         columnNumber: 11
                     }, this)
                 }, void 0, false, {
                     fileName: "src/components/loginView/login-view.jsx",
-                    lineNumber: 67,
+                    lineNumber: 68,
                     columnNumber: 9
                 }, this),
                 /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactBootstrap.Col), {}, void 0, false, {
                     fileName: "src/components/loginView/login-view.jsx",
-                    lineNumber: 111,
+                    lineNumber: 112,
                     columnNumber: 9
                 }, this)
             ]
         }, void 0, true, {
             fileName: "src/components/loginView/login-view.jsx",
-            lineNumber: 65,
+            lineNumber: 66,
             columnNumber: 7
         }, this)
     }, void 0, false, {
         fileName: "src/components/loginView/login-view.jsx",
-        lineNumber: 64,
+        lineNumber: 65,
         columnNumber: 5
     }, this);
 }
@@ -46531,7 +46532,6 @@ let mapStateToProps = (state)=>{
     };
 };
 LoginView.propTypes = {
-    setUser: (0, _propTypesDefault.default).func.isRequired,
     onLoggedIn: (0, _propTypesDefault.default).func.isRequired
 };
 exports.default = (0, _reactRedux.connect)(mapStateToProps, {
@@ -48794,10 +48794,11 @@ var _propTypesDefault = parcelHelpers.interopDefault(_propTypes);
 var _axios = require("axios");
 var _axiosDefault = parcelHelpers.interopDefault(_axios);
 var _actions = require("../../actions/actions");
-var _favoriteBook = require("./favorite-book");
 var _reactRouterDom = require("react-router-dom");
 var _reactBootstrap = require("react-bootstrap");
 var _reactRedux = require("react-redux");
+var _updatedUser = require("./updated-user");
+var _updatedUserDefault = parcelHelpers.interopDefault(_updatedUser);
 var _s = $RefreshSig$();
 function ProfileView(props) {
     _s();
@@ -48807,7 +48808,7 @@ function ProfileView(props) {
     const token = localStorage.getItem("token");
     const getUser = ()=>{
         console.log(token);
-        (0, _axiosDefault.default).get(`https://fierce-dawn-45347.herokuapp.com/user/${currentUser}`, {
+        (0, _axiosDefault.default).get(`https://fierce-dawn-45347.herokuapp.com/users/${currentUser}`, {
             headers: {
                 Authorization: `Bearer ${token}`
             }
@@ -48957,21 +48958,9 @@ function ProfileView(props) {
                 lineNumber: 74,
                 columnNumber: 7
             }, this),
-            /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactBootstrap.Row), {
-                className: "mt-3",
-                children: /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _favoriteBook.FavoriteBookV), {
-                    books: books,
-                    FavoriteBooks: (0, _favoriteBook.FavoriteBookV),
-                    currentUser: currentUser,
-                    token: token
-                }, void 0, false, {
-                    fileName: "src/components/profile-view/profile-view.jsx",
-                    lineNumber: 77,
-                    columnNumber: 9
-                }, this)
-            }, void 0, false, {
+            /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _updatedUserDefault.default), {}, void 0, false, {
                 fileName: "src/components/profile-view/profile-view.jsx",
-                lineNumber: 76,
+                lineNumber: 86,
                 columnNumber: 7
             }, this),
             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactRouterDom.Link), {
@@ -48982,12 +48971,12 @@ function ProfileView(props) {
                     children: "Update your Profile"
                 }, void 0, false, {
                     fileName: "src/components/profile-view/profile-view.jsx",
-                    lineNumber: 85,
+                    lineNumber: 88,
                     columnNumber: 9
                 }, this)
             }, void 0, false, {
                 fileName: "src/components/profile-view/profile-view.jsx",
-                lineNumber: 84,
+                lineNumber: 87,
                 columnNumber: 7
             }, this),
             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactBootstrap.Button), {
@@ -48997,7 +48986,7 @@ function ProfileView(props) {
                 children: "Delete Account"
             }, void 0, false, {
                 fileName: "src/components/profile-view/profile-view.jsx",
-                lineNumber: 89,
+                lineNumber: 92,
                 columnNumber: 7
             }, this)
         ]
@@ -49035,162 +49024,7 @@ $RefreshReg$(_c, "ProfileView");
   window.$RefreshReg$ = prevRefreshReg;
   window.$RefreshSig$ = prevRefreshSig;
 }
-},{"react/jsx-dev-runtime":"iTorj","react":"21dqq","prop-types":"7wKI2","axios":"jo6P5","./favorite-book":"jpaUi","react-bootstrap":"3AD9A","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"km3Ru","react-redux":"bdVon","react-router-dom":"cHIiW","../../actions/actions":"biFwH"}],"jpaUi":[function(require,module,exports) {
-var $parcel$ReactRefreshHelpers$5a73 = require("@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js");
-var prevRefreshReg = window.$RefreshReg$;
-var prevRefreshSig = window.$RefreshSig$;
-$parcel$ReactRefreshHelpers$5a73.prelude(module);
-
-try {
-var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
-parcelHelpers.defineInteropFlag(exports);
-var _jsxDevRuntime = require("react/jsx-dev-runtime");
-var _react = require("react");
-var _reactDefault = parcelHelpers.interopDefault(_react);
-var _propTypes = require("prop-types");
-var _propTypesDefault = parcelHelpers.interopDefault(_propTypes);
-var _axios = require("axios");
-var _axiosDefault = parcelHelpers.interopDefault(_axios);
-var _reactRedux = require("react-redux");
-var _reactRouterDom = require("react-router-dom");
-var _reactBootstrap = require("react-bootstrap");
-function FavoriteBookV(props) {
-    const { books: books1 , FavoriteBooks , currentUser , token  } = props;
-    const favoriteBookId = FavoriteBooks.map((m)=>m._id);
-    const FavoriteBooksList = books1.filter((m)=>{
-        return favoriteBookId.includes(m._id);
-    });
-    const handleBookDelete = (bookId)=>{
-        (0, _axiosDefault.default).delete(`https://fierce-dawn-45347.herokuapp.com/user/${currentUser}/books/${bookId}`, {
-            headers: {
-                Authorization: "Bearer ${token}"
-            }
-        }).then(()=>{
-            alert("this book was removed from favorites");
-            window.open("/users/:username", "_self");
-        }).catch((error)=>console.error(error));
-    };
-    return /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _react.Fragment), {
-        children: FavoriteBooksList.length === 0 ? /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("p", {
-            children: "this list is empty"
-        }, void 0, false, {
-            fileName: "src/components/profile-view/favorite-book.jsx",
-            lineNumber: 32,
-            columnNumber: 9
-        }, this) : FavoriteBooksList.map((m)=>{
-            return /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactBootstrap.Col), {
-                xs: 10,
-                sm: 8,
-                md: 6,
-                lg: 4,
-                children: /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactBootstrap.Card), {
-                    id: "book-card",
-                    children: [
-                        /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactRouterDom.Link), {
-                            to: `books/${book_id}`,
-                            children: /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactBootstrap.Card).Img, {
-                                variant: "top",
-                                src: book.ImagePath
-                            }, void 0, false, {
-                                fileName: "src/components/profile-view/favorite-book.jsx",
-                                lineNumber: 39,
-                                columnNumber: 19
-                            }, this)
-                        }, void 0, false, {
-                            fileName: "src/components/profile-view/favorite-book.jsx",
-                            lineNumber: 38,
-                            columnNumber: 17
-                        }, this),
-                        /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactBootstrap.Card).Body, {
-                            children: [
-                                /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactBootstrap.Card).Title, {
-                                    children: book.title
-                                }, void 0, false, {
-                                    fileName: "src/components/profile-view/favorite-book.jsx",
-                                    lineNumber: 42,
-                                    columnNumber: 19
-                                }, this),
-                                /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactBootstrap.Card).Text, {
-                                    children: book.description
-                                }, void 0, false, {
-                                    fileName: "src/components/profile-view/favorite-book.jsx",
-                                    lineNumber: 43,
-                                    columnNumber: 19
-                                }, this),
-                                /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactRouterDom.Link), {
-                                    to: `/books/${book._id}`,
-                                    children: /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactBootstrap.Button), {
-                                        className: "button",
-                                        variant: "outline-primary",
-                                        size: "sm",
-                                        children: "Open"
-                                    }, void 0, false, {
-                                        fileName: "src/components/profile-view/favorite-book.jsx",
-                                        lineNumber: 45,
-                                        columnNumber: 21
-                                    }, this)
-                                }, void 0, false, {
-                                    fileName: "src/components/profile-view/favorite-book.jsx",
-                                    lineNumber: 44,
-                                    columnNumber: 19
-                                }, this),
-                                /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactBootstrap.Button), {
-                                    className: "button ml-2",
-                                    variant: "outline-primary",
-                                    size: "sm",
-                                    onClick: ()=>{
-                                        handleBookDelete(book_id);
-                                    },
-                                    children: "Remove"
-                                }, void 0, false, {
-                                    fileName: "src/components/profile-view/favorite-book.jsx",
-                                    lineNumber: 51,
-                                    columnNumber: 19
-                                }, this)
-                            ]
-                        }, void 0, true, {
-                            fileName: "src/components/profile-view/favorite-book.jsx",
-                            lineNumber: 41,
-                            columnNumber: 17
-                        }, this)
-                    ]
-                }, void 0, true, {
-                    fileName: "src/components/profile-view/favorite-book.jsx",
-                    lineNumber: 37,
-                    columnNumber: 15
-                }, this)
-            }, void 0, false, {
-                fileName: "src/components/profile-view/favorite-book.jsx",
-                lineNumber: 36,
-                columnNumber: 13
-            }, this);
-        })
-    }, void 0, false, {
-        fileName: "src/components/profile-view/favorite-book.jsx",
-        lineNumber: 30,
-        columnNumber: 5
-    }, this);
-}
-_c = FavoriteBookV;
-let mapStateToProps = (state)=>{
-    return {
-        books: state.books,
-        user: state.user,
-        favorites: state.favorites
-    };
-};
-exports.default = (0, _reactRedux.connect)(mapStateToProps, {
-    books
-})(FavoriteBookV);
-var _c;
-$RefreshReg$(_c, "FavoriteBookV");
-
-  $parcel$ReactRefreshHelpers$5a73.postlude(module);
-} finally {
-  window.$RefreshReg$ = prevRefreshReg;
-  window.$RefreshSig$ = prevRefreshSig;
-}
-},{"react/jsx-dev-runtime":"iTorj","react":"21dqq","prop-types":"7wKI2","axios":"jo6P5","react-router-dom":"cHIiW","react-bootstrap":"3AD9A","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"km3Ru","react-redux":"bdVon"}],"b0906":[function(require,module,exports) {
+},{"react/jsx-dev-runtime":"iTorj","react":"21dqq","prop-types":"7wKI2","axios":"jo6P5","react-bootstrap":"3AD9A","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"km3Ru","react-redux":"bdVon","react-router-dom":"cHIiW","../../actions/actions":"biFwH","./updated-user":"b0906"}],"b0906":[function(require,module,exports) {
 var $parcel$ReactRefreshHelpers$798b = require("@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js");
 var prevRefreshReg = window.$RefreshReg$;
 var prevRefreshSig = window.$RefreshSig$;
@@ -49198,6 +49032,8 @@ $parcel$ReactRefreshHelpers$798b.prelude(module);
 
 try {
 var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
+parcelHelpers.defineInteropFlag(exports);
+parcelHelpers.export(exports, "UpdateUser", ()=>UpdateUser);
 var _jsxDevRuntime = require("react/jsx-dev-runtime");
 var _react = require("react");
 var _reactDefault = parcelHelpers.interopDefault(_react);
@@ -49205,7 +49041,6 @@ var _propTypes = require("prop-types");
 var _propTypesDefault = parcelHelpers.interopDefault(_propTypes);
 var _axios = require("axios");
 var _axiosDefault = parcelHelpers.interopDefault(_axios);
-var _reactRedux = require("react-redux");
 var _reactBootstrap = require("react-bootstrap");
 var _s = $RefreshSig$();
 function UpdateUser(props) {
@@ -49268,7 +49103,7 @@ function UpdateUser(props) {
         const isReq = validate();
         if (isReq) {
             const token = localStorage.getItem("token");
-            (0, _axiosDefault.default).put(`https://fierce-dawn-45347.herokuapp.com/users/${user.username}`, {
+            (0, _axiosDefault.default).put(`https://fierce-dawn-45347.herokuapp.com/users/${username}`, {
                 username: username,
                 password: password,
                 email: email,
@@ -49294,12 +49129,12 @@ function UpdateUser(props) {
                     children: "Edit Profile"
                 }, void 0, false, {
                     fileName: "src/components/profile-view/updated-user.jsx",
-                    lineNumber: 85,
+                    lineNumber: 84,
                     columnNumber: 12
                 }, this)
             }, void 0, false, {
                 fileName: "src/components/profile-view/updated-user.jsx",
-                lineNumber: 85,
+                lineNumber: 84,
                 columnNumber: 7
             }, this),
             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactBootstrap.Row), {
@@ -49312,7 +49147,7 @@ function UpdateUser(props) {
                                     children: "Username: "
                                 }, void 0, false, {
                                     fileName: "src/components/profile-view/updated-user.jsx",
-                                    lineNumber: 89,
+                                    lineNumber: 88,
                                     columnNumber: 13
                                 }, this),
                                 /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactBootstrap.Form).Control, {
@@ -49323,20 +49158,20 @@ function UpdateUser(props) {
                                     required: true
                                 }, void 0, false, {
                                     fileName: "src/components/profile-view/updated-user.jsx",
-                                    lineNumber: 90,
+                                    lineNumber: 89,
                                     columnNumber: 13
                                 }, this),
                                 values.usernameErr && /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("p", {
                                     children: values.usernameErr
                                 }, void 0, false, {
                                     fileName: "src/components/profile-view/updated-user.jsx",
-                                    lineNumber: 96,
+                                    lineNumber: 95,
                                     columnNumber: 36
                                 }, this)
                             ]
                         }, void 0, true, {
                             fileName: "src/components/profile-view/updated-user.jsx",
-                            lineNumber: 88,
+                            lineNumber: 87,
                             columnNumber: 11
                         }, this),
                         /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactBootstrap.Form).Group, {
@@ -49346,7 +49181,7 @@ function UpdateUser(props) {
                                     children: "Password: "
                                 }, void 0, false, {
                                     fileName: "src/components/profile-view/updated-user.jsx",
-                                    lineNumber: 100,
+                                    lineNumber: 99,
                                     columnNumber: 13
                                 }, this),
                                 /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactBootstrap.Form).Control, {
@@ -49357,20 +49192,20 @@ function UpdateUser(props) {
                                     required: true
                                 }, void 0, false, {
                                     fileName: "src/components/profile-view/updated-user.jsx",
-                                    lineNumber: 101,
+                                    lineNumber: 100,
                                     columnNumber: 13
                                 }, this),
                                 values.passwordErr && /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("p", {
                                     children: values.passwordErr
                                 }, void 0, false, {
                                     fileName: "src/components/profile-view/updated-user.jsx",
-                                    lineNumber: 107,
+                                    lineNumber: 106,
                                     columnNumber: 36
                                 }, this)
                             ]
                         }, void 0, true, {
                             fileName: "src/components/profile-view/updated-user.jsx",
-                            lineNumber: 99,
+                            lineNumber: 98,
                             columnNumber: 11
                         }, this),
                         /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactBootstrap.Form).Group, {
@@ -49380,7 +49215,7 @@ function UpdateUser(props) {
                                     children: "Email: "
                                 }, void 0, false, {
                                     fileName: "src/components/profile-view/updated-user.jsx",
-                                    lineNumber: 111,
+                                    lineNumber: 110,
                                     columnNumber: 13
                                 }, this),
                                 /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactBootstrap.Form).Control, {
@@ -49391,20 +49226,20 @@ function UpdateUser(props) {
                                     required: true
                                 }, void 0, false, {
                                     fileName: "src/components/profile-view/updated-user.jsx",
-                                    lineNumber: 112,
+                                    lineNumber: 111,
                                     columnNumber: 13
                                 }, this),
                                 values.emailErr && /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("p", {
                                     children: values.passwordErr
                                 }, void 0, false, {
                                     fileName: "src/components/profile-view/updated-user.jsx",
-                                    lineNumber: 118,
+                                    lineNumber: 117,
                                     columnNumber: 33
                                 }, this)
                             ]
                         }, void 0, true, {
                             fileName: "src/components/profile-view/updated-user.jsx",
-                            lineNumber: 110,
+                            lineNumber: 109,
                             columnNumber: 11
                         }, this),
                         /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactBootstrap.Form).Group, {
@@ -49414,7 +49249,7 @@ function UpdateUser(props) {
                                     children: "birthday:"
                                 }, void 0, false, {
                                     fileName: "src/components/profile-view/updated-user.jsx",
-                                    lineNumber: 121,
+                                    lineNumber: 120,
                                     columnNumber: 13
                                 }, this),
                                 /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactBootstrap.Form).Control, {
@@ -49424,13 +49259,13 @@ function UpdateUser(props) {
                                     placeholder: "YYYY-MM-DD"
                                 }, void 0, false, {
                                     fileName: "src/components/profile-view/updated-user.jsx",
-                                    lineNumber: 122,
+                                    lineNumber: 121,
                                     columnNumber: 13
                                 }, this)
                             ]
                         }, void 0, true, {
                             fileName: "src/components/profile-view/updated-user.jsx",
-                            lineNumber: 120,
+                            lineNumber: 119,
                             columnNumber: 11
                         }, this),
                         /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactBootstrap.Button), {
@@ -49440,24 +49275,24 @@ function UpdateUser(props) {
                             children: "Update Profile"
                         }, void 0, false, {
                             fileName: "src/components/profile-view/updated-user.jsx",
-                            lineNumber: 128,
+                            lineNumber: 127,
                             columnNumber: 11
                         }, this)
                     ]
                 }, void 0, true, {
                     fileName: "src/components/profile-view/updated-user.jsx",
-                    lineNumber: 87,
+                    lineNumber: 86,
                     columnNumber: 9
                 }, this)
             }, void 0, false, {
                 fileName: "src/components/profile-view/updated-user.jsx",
-                lineNumber: 86,
+                lineNumber: 85,
                 columnNumber: 7
             }, this)
         ]
     }, void 0, true, {
         fileName: "src/components/profile-view/updated-user.jsx",
-        lineNumber: 84,
+        lineNumber: 83,
         columnNumber: 5
     }, this);
 }
@@ -49467,7 +49302,8 @@ const mapStateToProps = (state)=>{
     return {
         user: state.user
     };
-}; // export default connect(mapStateToProps, { setUser })(UpdateUser);
+};
+exports.default = UpdateUser;
 var _c;
 $RefreshReg$(_c, "UpdateUser");
 
@@ -49476,7 +49312,7 @@ $RefreshReg$(_c, "UpdateUser");
   window.$RefreshReg$ = prevRefreshReg;
   window.$RefreshSig$ = prevRefreshSig;
 }
-},{"react/jsx-dev-runtime":"iTorj","react":"21dqq","prop-types":"7wKI2","axios":"jo6P5","react-bootstrap":"3AD9A","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"km3Ru","react-redux":"bdVon"}],"k60w4":[function(require,module,exports) {
+},{"react/jsx-dev-runtime":"iTorj","react":"21dqq","prop-types":"7wKI2","axios":"jo6P5","react-bootstrap":"3AD9A","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"km3Ru"}],"k60w4":[function(require,module,exports) {
 var $parcel$ReactRefreshHelpers$0024 = require("@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js");
 var prevRefreshReg = window.$RefreshReg$;
 var prevRefreshSig = window.$RefreshSig$;
@@ -50275,10 +50111,6 @@ function user(state = "", action) {
     switch(action.type){
         case 0, _actions.SET_USER:
             return action.value || localStorage.getItem("user");
-        case 0, _actions.ADD_FAVBOOK:
-            return action.value;
-        case 0, _actions.REM_FAVBOOK:
-            return action.value;
         default:
             return state;
     }

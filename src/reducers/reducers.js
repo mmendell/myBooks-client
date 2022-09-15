@@ -30,10 +30,6 @@ function user(state = '', action) {
   switch (action.type) {
     case SET_USER:
       return action.value || localStorage.getItem('user');
-    case ADD_FAVBOOK:
-      return action.value;
-    case REM_FAVBOOK:
-      return action.value;
     default:
       return state;
   }

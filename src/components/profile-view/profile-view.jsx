@@ -2,13 +2,13 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import axios from 'axios';
 import {setUser} from '../../actions/actions';
-import { FavoriteBookV } from './favorite-book';
 import { Link } from 'react-router-dom';
 
 import { Button, Col, Row, Container } from 'react-bootstrap';
 import { useState } from 'react';
 import { useEffect } from 'react';
 import { connect } from 'react-redux';
+import UpdateUser from './updated-user';
 
 function ProfileView(props) {
   const [user, setUser] = useState(props.user);
@@ -16,11 +16,10 @@ function ProfileView(props) {
   const currentUser = localStorage.getItem('user');
   const token = localStorage.getItem('token');
 
-  const { books, user } = this.props;
 
   const getUser = () => {
     console.log(token);
-    axios.get(`https://fierce-dawn-45347.herokuapp.com/user/${currentUser}`, {
+    axios.get(`https://fierce-dawn-45347.herokuapp.com/users/${currentUser}`, {
       headers: {Authorization: `Bearer ${token}`},
     })
         .then(response => {
@@ -74,14 +73,17 @@ function ProfileView(props) {
 
       <Row className="mt-5"><h3>favoite books</h3></Row>
 
-      <Row className="mt-3">
+      {/* <Row className="mt-3">
         <FavoriteBookV
-          books={books}
+          // books={books}
           FavoriteBooks={FavoriteBookV}
           currentUser={currentUser}
           token={token} />
 
-      </Row>
+      </Row> */}
+
+
+      <UpdateUser />
       <Link to={`/users-update/`}>
         <Button className='mb-2 ml-2 button' variant='info'>
           Update your Profile

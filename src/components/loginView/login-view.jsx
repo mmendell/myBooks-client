@@ -52,7 +52,8 @@ export function LoginView(props) {
           .then(response => {
             const data = response.data;
             props.onLoggedIn(data);
-            props.setUser(data);
+            this.props.setUser(data);
+            window.location.reload();
           })
           .catch((err) => {
             console.log('login failed', err);
@@ -119,7 +120,6 @@ let mapStateToProps = state => {
 };
 
 LoginView.propTypes = {
-  setUser: PropTypes.func.isRequired,
   onLoggedIn: PropTypes.func.isRequired,
 };
 
