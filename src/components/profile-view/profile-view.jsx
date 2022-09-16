@@ -58,7 +58,7 @@ function ProfileView(props) {
 
       <Row >
         <Col className="label">Password</Col>
-        <Col className="value">{user.password}</Col>
+        <Col className="value">********</Col>
       </Row>
 
       <Row >
