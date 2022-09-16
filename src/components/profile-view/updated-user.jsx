@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import axios from 'axios';
 import { Button, Col, Container, Form, Row } from 'react-bootstrap';
+import { Link } from 'react-router-dom';
 
 export function UpdateUser(props)
 {
@@ -124,9 +125,11 @@ export function UpdateUser(props)
               placeholder="YYYY-MM-DD" />
           </Form.Group>
 
-          <Button variant='warning' type="submit" onClick={handleSubmit} >
-          Update Profile
-          </Button>
+          <Link to={`/users-update/`}>
+            <Button className='mb-2 ml-2 button' variant='info'>
+          Update your Profile
+            </Button>
+          </Link>
         </Form>
       </Row>
     </Container>

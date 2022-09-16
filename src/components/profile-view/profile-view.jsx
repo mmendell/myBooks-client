@@ -84,11 +84,7 @@ function ProfileView(props) {
 
 
       <UpdateUser />
-      <Link to={`/users-update/`}>
-        <Button className='mb-2 ml-2 button' variant='info'>
-          Update your Profile
-        </Button>
-      </Link>
+
       <Button
         className="d-block mt-5"
         variant="danger"
@@ -109,9 +105,9 @@ let mapStateToProps = state => {
 
 ProfileView.propTypes = {
   user: PropTypes.shape({
-    username: PropTypes.string.isRequired,
-    password: PropTypes.string.isRequired,
-    email: PropTypes.string.isRequired,
+    username: PropTypes.string,
+    password: PropTypes.string,
+    email: PropTypes.string,
     birthday: PropTypes.string,
   }).isRequired,
 };

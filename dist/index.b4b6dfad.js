@@ -48962,22 +48962,6 @@ function ProfileView(props) {
                 lineNumber: 86,
                 columnNumber: 7
             }, this),
-            /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactRouterDom.Link), {
-                to: `/users-update/`,
-                children: /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactBootstrap.Button), {
-                    className: "mb-2 ml-2 button",
-                    variant: "info",
-                    children: "Update your Profile"
-                }, void 0, false, {
-                    fileName: "src/components/profile-view/profile-view.jsx",
-                    lineNumber: 88,
-                    columnNumber: 9
-                }, this)
-            }, void 0, false, {
-                fileName: "src/components/profile-view/profile-view.jsx",
-                lineNumber: 87,
-                columnNumber: 7
-            }, this),
             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactBootstrap.Button), {
                 className: "d-block mt-5",
                 variant: "danger",
@@ -48985,7 +48969,7 @@ function ProfileView(props) {
                 children: "Delete Account"
             }, void 0, false, {
                 fileName: "src/components/profile-view/profile-view.jsx",
-                lineNumber: 92,
+                lineNumber: 88,
                 columnNumber: 7
             }, this)
         ]
@@ -49006,9 +48990,9 @@ let mapStateToProps = (state)=>{
 };
 ProfileView.propTypes = {
     user: (0, _propTypesDefault.default).shape({
-        username: (0, _propTypesDefault.default).string.isRequired,
-        password: (0, _propTypesDefault.default).string.isRequired,
-        email: (0, _propTypesDefault.default).string.isRequired,
+        username: (0, _propTypesDefault.default).string,
+        password: (0, _propTypesDefault.default).string,
+        email: (0, _propTypesDefault.default).string,
         birthday: (0, _propTypesDefault.default).string
     }).isRequired
 };
@@ -49041,6 +49025,7 @@ var _propTypesDefault = parcelHelpers.interopDefault(_propTypes);
 var _axios = require("axios");
 var _axiosDefault = parcelHelpers.interopDefault(_axios);
 var _reactBootstrap = require("react-bootstrap");
+var _reactRouterDom = require("react-router-dom");
 var _s = $RefreshSig$();
 function UpdateUser(props) {
     _s();
@@ -49128,12 +49113,12 @@ function UpdateUser(props) {
                     children: "Edit Profile"
                 }, void 0, false, {
                     fileName: "src/components/profile-view/updated-user.jsx",
-                    lineNumber: 84,
+                    lineNumber: 85,
                     columnNumber: 12
                 }, this)
             }, void 0, false, {
                 fileName: "src/components/profile-view/updated-user.jsx",
-                lineNumber: 84,
+                lineNumber: 85,
                 columnNumber: 7
             }, this),
             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactBootstrap.Row), {
@@ -49146,7 +49131,7 @@ function UpdateUser(props) {
                                     children: "Username: "
                                 }, void 0, false, {
                                     fileName: "src/components/profile-view/updated-user.jsx",
-                                    lineNumber: 88,
+                                    lineNumber: 89,
                                     columnNumber: 13
                                 }, this),
                                 /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactBootstrap.Form).Control, {
@@ -49157,20 +49142,20 @@ function UpdateUser(props) {
                                     required: true
                                 }, void 0, false, {
                                     fileName: "src/components/profile-view/updated-user.jsx",
-                                    lineNumber: 89,
+                                    lineNumber: 90,
                                     columnNumber: 13
                                 }, this),
                                 values.usernameErr && /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("p", {
                                     children: values.usernameErr
                                 }, void 0, false, {
                                     fileName: "src/components/profile-view/updated-user.jsx",
-                                    lineNumber: 95,
+                                    lineNumber: 96,
                                     columnNumber: 36
                                 }, this)
                             ]
                         }, void 0, true, {
                             fileName: "src/components/profile-view/updated-user.jsx",
-                            lineNumber: 87,
+                            lineNumber: 88,
                             columnNumber: 11
                         }, this),
                         /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactBootstrap.Form).Group, {
@@ -49180,7 +49165,7 @@ function UpdateUser(props) {
                                     children: "Password: "
                                 }, void 0, false, {
                                     fileName: "src/components/profile-view/updated-user.jsx",
-                                    lineNumber: 99,
+                                    lineNumber: 100,
                                     columnNumber: 13
                                 }, this),
                                 /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactBootstrap.Form).Control, {
@@ -49191,20 +49176,20 @@ function UpdateUser(props) {
                                     required: true
                                 }, void 0, false, {
                                     fileName: "src/components/profile-view/updated-user.jsx",
-                                    lineNumber: 100,
+                                    lineNumber: 101,
                                     columnNumber: 13
                                 }, this),
                                 values.passwordErr && /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("p", {
                                     children: values.passwordErr
                                 }, void 0, false, {
                                     fileName: "src/components/profile-view/updated-user.jsx",
-                                    lineNumber: 106,
+                                    lineNumber: 107,
                                     columnNumber: 36
                                 }, this)
                             ]
                         }, void 0, true, {
                             fileName: "src/components/profile-view/updated-user.jsx",
-                            lineNumber: 98,
+                            lineNumber: 99,
                             columnNumber: 11
                         }, this),
                         /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactBootstrap.Form).Group, {
@@ -49214,7 +49199,7 @@ function UpdateUser(props) {
                                     children: "Email: "
                                 }, void 0, false, {
                                     fileName: "src/components/profile-view/updated-user.jsx",
-                                    lineNumber: 110,
+                                    lineNumber: 111,
                                     columnNumber: 13
                                 }, this),
                                 /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactBootstrap.Form).Control, {
@@ -49225,20 +49210,20 @@ function UpdateUser(props) {
                                     required: true
                                 }, void 0, false, {
                                     fileName: "src/components/profile-view/updated-user.jsx",
-                                    lineNumber: 111,
+                                    lineNumber: 112,
                                     columnNumber: 13
                                 }, this),
                                 values.emailErr && /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("p", {
                                     children: values.passwordErr
                                 }, void 0, false, {
                                     fileName: "src/components/profile-view/updated-user.jsx",
-                                    lineNumber: 117,
+                                    lineNumber: 118,
                                     columnNumber: 33
                                 }, this)
                             ]
                         }, void 0, true, {
                             fileName: "src/components/profile-view/updated-user.jsx",
-                            lineNumber: 109,
+                            lineNumber: 110,
                             columnNumber: 11
                         }, this),
                         /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactBootstrap.Form).Group, {
@@ -49248,7 +49233,7 @@ function UpdateUser(props) {
                                     children: "birthday:"
                                 }, void 0, false, {
                                     fileName: "src/components/profile-view/updated-user.jsx",
-                                    lineNumber: 120,
+                                    lineNumber: 121,
                                     columnNumber: 13
                                 }, this),
                                 /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactBootstrap.Form).Control, {
@@ -49258,40 +49243,46 @@ function UpdateUser(props) {
                                     placeholder: "YYYY-MM-DD"
                                 }, void 0, false, {
                                     fileName: "src/components/profile-view/updated-user.jsx",
-                                    lineNumber: 121,
+                                    lineNumber: 122,
                                     columnNumber: 13
                                 }, this)
                             ]
                         }, void 0, true, {
                             fileName: "src/components/profile-view/updated-user.jsx",
-                            lineNumber: 119,
+                            lineNumber: 120,
                             columnNumber: 11
                         }, this),
-                        /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactBootstrap.Button), {
-                            variant: "warning",
-                            type: "submit",
-                            onClick: handleSubmit,
-                            children: "Update Profile"
+                        /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactRouterDom.Link), {
+                            to: `/users-update/`,
+                            children: /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactBootstrap.Button), {
+                                className: "mb-2 ml-2 button",
+                                variant: "info",
+                                children: "Update your Profile"
+                            }, void 0, false, {
+                                fileName: "src/components/profile-view/updated-user.jsx",
+                                lineNumber: 129,
+                                columnNumber: 13
+                            }, this)
                         }, void 0, false, {
                             fileName: "src/components/profile-view/updated-user.jsx",
-                            lineNumber: 127,
+                            lineNumber: 128,
                             columnNumber: 11
                         }, this)
                     ]
                 }, void 0, true, {
                     fileName: "src/components/profile-view/updated-user.jsx",
-                    lineNumber: 86,
+                    lineNumber: 87,
                     columnNumber: 9
                 }, this)
             }, void 0, false, {
                 fileName: "src/components/profile-view/updated-user.jsx",
-                lineNumber: 85,
+                lineNumber: 86,
                 columnNumber: 7
             }, this)
         ]
     }, void 0, true, {
         fileName: "src/components/profile-view/updated-user.jsx",
-        lineNumber: 83,
+        lineNumber: 84,
         columnNumber: 5
     }, this);
 }
@@ -49311,7 +49302,7 @@ $RefreshReg$(_c, "UpdateUser");
   window.$RefreshReg$ = prevRefreshReg;
   window.$RefreshSig$ = prevRefreshSig;
 }
-},{"react/jsx-dev-runtime":"iTorj","react":"21dqq","prop-types":"7wKI2","axios":"jo6P5","react-bootstrap":"3AD9A","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"km3Ru"}],"k60w4":[function(require,module,exports) {
+},{"react/jsx-dev-runtime":"iTorj","react":"21dqq","prop-types":"7wKI2","axios":"jo6P5","react-bootstrap":"3AD9A","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"km3Ru","react-router-dom":"cHIiW"}],"k60w4":[function(require,module,exports) {
 var $parcel$ReactRefreshHelpers$0024 = require("@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js");
 var prevRefreshReg = window.$RefreshReg$;
 var prevRefreshSig = window.$RefreshSig$;
