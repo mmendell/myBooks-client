@@ -49,11 +49,10 @@ export function LoginView(props) {
             username: username,
             password: password,
           })
-          .then(response => {
+          .then((response) => {
             const data = response.data;
             props.onLoggedIn(data);
-            this.props.setUser(data);
-            window.location.reload();
+            window.open('/', '_self');
           })
           .catch((err) => {
             console.log('login failed', err);
@@ -115,7 +114,7 @@ export function LoginView(props) {
   );
 }
 
-let mapStateToProps = state => {
+const mapStateToProps = (state) => {
   return { user: state.user };
 };
 

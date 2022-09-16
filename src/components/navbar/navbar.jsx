@@ -8,13 +8,13 @@ import { Link } from 'react-router-dom';
 import './navbar.scss';
 
 export function NavBar() {
-  let user = localStorage.getItem('user');
+  const user = localStorage.getItem('user');
 
   const handleLogOut = (e) => {
     e.preventDefault();
     localStorage.clear();
+    localStorage.removeItem('token');
     window.open('/', '_self');
-    props.onLoggedOut(user);
   };
 
   const isAuth = () => {
@@ -56,7 +56,7 @@ export function NavBar() {
   );
 }
 
-let mapStateToProps = {
+const mapStateToProps = {
   user: PropTypes.string.isRequired,
 };
 

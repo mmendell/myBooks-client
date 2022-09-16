@@ -4,8 +4,8 @@ import {
   SET_FILTER,
   SET_BOOKS,
   SET_USER,
-  ADD_FAVBOOK,
-  REM_FAVBOOK,
+  // ADD_FAVBOOK,
+  // REM_FAVBOOK,
 } from '../actions/actions';
 
 function visibilityFilter( state = '', action) {
